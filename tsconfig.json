@@ -15,6 +15,23 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@core/*": ["src/app/core/*"],
+      "@material/*": ["src/app/material/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@admin/*": ["src/app/admin/*"],
+      "@auth/*": ["src/app/auth/*"],
+      "@crepe/*": ["src/app/crepe/*"],
+      "@cafe/*": ["src/app/cafe/*"],
+      "@contacto/*": ["src/app/contacto/*"],
+      "@guardianes/*": ["src/app/guardianes/*"],
+      "@home/*": ["src/app/home/*"],
+      "@ingredients/*": ["src/app/ingredients/*"],
+      "@icecream/*": ["src/app/icecream/*"],
+      "@layout/*": ["src/app/layout/*"],
+      "@order/*": ["src/app/order/*"],
+      "@shake/*": ["src/app/shake/*"],
+    }
   }
 }
