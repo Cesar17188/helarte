@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Rum+Raisin&display=swap");
+
+mat-toolbar {
+  background: -webkit-linear-gradient(
+    -45deg,
+    rgba(183, 222, 237, 0.55) 11%,
+    rgba(113, 206, 239, 0.55) 23%,
+    rgba(96, 200, 236, 0.55) 30%,
+    rgba(33, 180, 226, 0.8) 55%,
+    rgba(110, 202, 232, 1) 75%,
+    rgba(183, 222, 237, 1) 94%
+  );
+
+  padding: 0;
+  margin: 0;
+  justify-content: space-around;
+}
+
+h3,
+h4 {
+  font-family: "Rum Raisin", sans-serif;
+  font-size: x-large;
+  color: #d2691e;
+}
+h2 {
+  font-family: "Rum Raisin", sans-serif;
+  font-size: 4rem;
+  color: #d2691e;
+}
+
+.redess {
+  display: flex;
+}
+
+.logo img {
+  max-width: 90px;
+  border-radius: 50px;
+  padding: 0 14px;
+}
+
+@media (min-width: 360px) {
+  .eslogan,
+  .registered {
+    display: none;
+  }
+  .example-spacer1 {
+    display: none;
+  }
+  .logo img {
+    max-width: 70px;
+    border-radius: 50px;
+    padding: 0 14px;
+  }
+}
+
+@media (min-width: 768px) {
+  .eslogan {
+    display: flex;
+  }
+  .example-spacer1 {
+    display: block;
+  }
+  .redess {
+    max-width: 90px;
+    border-radius: 50px;
+    padding: 0 14px;
+  }
+}

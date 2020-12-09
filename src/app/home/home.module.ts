@@ -1,15 +1,29 @@
+// módulos de carga nativos de Angular
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { HomeRoutingModule } from './home-routing.module';
-import { HomeComponent } from './home.component';
+// Componentes del módulo home
+import { HomeComponent } from '@home/components/home/home.component';
+import { ProductComponent } from '@home/components/product/product.component';
+import { ProductsContainer } from '@home/containers/products/products.container';
 
+// módulo para enrutamiento del módulo shake
+import { HomeRoutingModule } from '@home/home-routing.module';
 
+// módulos de carga de componentes externos complementarios
+import { ShareModule } from '@shared/shared.module';
+import { MaterialModule } from '@material/material.module';
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [
+    HomeComponent,
+    ProductComponent,
+    ProductsContainer
+  ],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    ShareModule,
+    MaterialModule
   ]
 })
 export class HomeModule { }

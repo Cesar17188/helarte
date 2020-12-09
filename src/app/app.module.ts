@@ -10,6 +10,16 @@ import { LayoutComponent } from './layout/layout.component';
 // módulo para carga de rutas
 import { AppRoutingModule } from './app-routing.module';
 
+// módulos para el manejo de firebase
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { environment } from 'src/environments/environment';
+
 // módulos del e-commerce
 import { ShareModule } from '@shared/shared.module';
 import { ContactoModule } from '@contacto/contacto.module';
@@ -22,6 +32,7 @@ import { CafeModule } from '@cafe/cafe.module';
 import { ShakeModule } from '@shake/shake.module';
 import { AuthModule } from '@auth/auth.module';
 import { PageNotFoundRoutingModule } from './page-not-found/page-not-found-routing.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +52,13 @@ import { PageNotFoundRoutingModule } from './page-not-found/page-not-found-routi
     CafeModule,
     ShakeModule,
     AuthModule,
-    PageNotFoundRoutingModule
+    PageNotFoundRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAnalyticsModule,
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

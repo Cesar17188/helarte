@@ -1,9 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Rum+Raisin&display=swap");
 
-@import '~bootstrap/scss/bootstrap';
-@import '~bootstrap/scss/bootstrap-reboot';
-@import '~bootstrap/scss/bootstrap-grid';
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+}
 
+@media (min-width: 500px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@media (min-width: 1320px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1400px) {
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Rum Raisin, "Helvetica Neue", sans-serif;
+}
+.mat-dialog-container {
+  background: -webkit-radial-gradient(
+    center,
+    ellipse cover,
+    rgba(255, 227, 194, 1) 0%,
+    rgba(255, 216, 170, 1) 24%,
+    rgba(255, 189, 109, 0.84) 86%,
+    rgba(255, 186, 102, 0.84) 93%
+  );
+}

@@ -1,12 +1,30 @@
+// módulos de carga nativos de Angular
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ShakeComponent } from './shake.component';
+// componentes a mostrar por medio de rutas
+import { ShakeproductsComponent } from '@shake/containers/shakeproducts/shakeproducts.component';
+import { ShakedetailComponent } from '@shake/components/shakedetail/shakedetail.component';
 
-const routes: Routes = [{ path: '', component: ShakeComponent }];
+const routes: Routes = [
+  { path: '',
+  component: ShakeproductsComponent
+  },
+  {
+    path: ':codigo',
+    component: ShakedetailComponent
+  }
+];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes)
+  ],
+  exports: [
+    RouterModule
+  ],
+  declarations: []
 })
 export class ShakeRoutingModule { }

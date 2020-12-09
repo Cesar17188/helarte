@@ -32,6 +32,7 @@
       "@layout/*": ["src/app/layout/*"],
       "@order/*": ["src/app/order/*"],
       "@shake/*": ["src/app/shake/*"],
+      "@assets/*": ["src/assets/*"]
     }
   }
 }

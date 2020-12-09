@@ -1,0 +1,57 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <mat-toolbar class="example-toolbar">
+      <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+      <app-header></app-header>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container"
+    [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+        <mat-nav-list>
+          <a mat-list-item routerLink="/home" routerLinkActive="active">Store
+            <span>
+              <img src="https://img.icons8.com/metro/26/000000/small-business.png"/>
+            </span>
+          </a>
+          <a mat-list-item routerLink="/helados" routerLinkActive="active">Helados
+            <span>
+              <img src="https://img.icons8.com/metro/24/000000/ice-cream-cone.png"/>
+            </span>
+          </a>
+          <a mat-list-item routerLink="/crepes" routerLinkActive="active">Crepes
+            <span>
+              <img src="https://img.icons8.com/small/24/000000/cinnamon-roll.png"/>
+            </span>
+          </a>
+          <a mat-list-item routerLink="/shakes" routerLinkActive="active">Shakes
+            <span>
+              <img src="https://img.icons8.com/windows/30/000000/milkshake.png"/>
+            </span>
+          </a>
+          <a mat-list-item routerLink="/cafes" routerLinkActive="active">Cafes
+            <span>
+              <img src="https://img.icons8.com/wired/24/000000/cafe.png"/>
+            </span>
+          </a>
+          <a mat-list-item routerLink="/contacto" routerLinkActive="active">Contacto
+            <span>
+              <img src="https://img.icons8.com/windows/24/000000/about-us-male--v1.png"/>
+            </span>
+          </a>
+          <a mat-list-item routerLink="/cart" routerLinkActive="active">Carrito
+            <span>
+              <img src="https://img.icons8.com/windows/24/000000/about-us-male--v1.png"/>
+            </span>
+          </a>
+          <!-- <span *ngIf="user$ | async">
+            <a mat-list-item (click)="logout()" routerLinkActive="active">Cerrar Seción</a>
+          </span> -->
+        </mat-nav-list>
+      </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+    <app-footer></app-footer>
+</div>
