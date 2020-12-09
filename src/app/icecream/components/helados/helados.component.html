@@ -1,1 +1,18 @@
-<p>helados works!</p>
+<mat-card class="example-card">
+    <mat-card-header class="header">    
+        <mat-card-title class="title">
+            {{ product.producto | uppercase }}
+        </mat-card-title>
+        <mat-card-subtitle>
+            {{ product.descripcion_corta }}
+        </mat-card-subtitle>
+    </mat-card-header>
+    <a  [routerLink]="['/helados', product.codigo]"> <mat-card-content class="content">
+        <img [src]="product.img | async " alt="">
+        <!-- <p class="descripcion"><strong>{{ product.descripcion_larga}}</strong></p> -->
+    </mat-card-content> </a>  
+    <mat-card-actions>
+        <a mat-raised-button  color="warn" [routerLink]="['/helados', product.codigo]">Elige tu {{product.producto}}</a>
+    </mat-card-actions>
+</mat-card>
+
