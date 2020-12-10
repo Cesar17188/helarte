@@ -2,11 +2,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from '@core/models/product.model';
 
 @Component({
-  selector: 'app-shakes',
-  templateUrl: './shakes.component.html',
-  styleUrls: ['./shakes.component.scss']
+  selector: 'app-crepes',
+  templateUrl: './crepes.component.html',
+  styleUrls: ['./crepes.component.scss']
 })
-export class ShakesComponent implements OnInit {
+export class CrepesComponent implements OnInit {
 
   @Input() product: Product;
   @Output() productAdd: EventEmitter<any> = new EventEmitter();
@@ -16,7 +16,7 @@ export class ShakesComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // tslint:disable-next-line:typedef
+  // tslint:disable-next-line: typedef
   addcart() {
     console.log('añadir al carrito');
     this.productAdd.emit(this.product.codigo);

@@ -4,12 +4,12 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
 // componentes a mostrar por medio de rutas
-import { ShakeproductsComponent } from '@shake/containers/shakeproducts/shakeproducts.component';
+import { ShakeproductsContainer } from '@shake/containers/shakeproducts/shakeproducts.container';
 import { ShakedetailComponent } from '@shake/components/shakedetail/shakedetail.component';
 
 const routes: Routes = [
   { path: '',
-  component: ShakeproductsComponent
+  component: ShakeproductsContainer
   },
   {
     path: ':codigo',

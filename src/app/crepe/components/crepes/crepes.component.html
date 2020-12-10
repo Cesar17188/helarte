@@ -7,14 +7,14 @@
             {{ product.descripcion_corta }}
         </mat-card-subtitle>
     </mat-card-header>
-        <a [routerLink]="['/shakes', product.codigo]"> <mat-card-content class="content">
+    <a [routerLink]="['/crepes', product.codigo]"> 
+        <mat-card-content class="content">
             <img [src]="product.img | async" alt="">
             <!-- <p class="descripcion"><strong>{{ product.descripcion_larga}}</strong></p> -->
-    </mat-card-content>
-        </a>  
+        </mat-card-content> 
+    </a>  
     <mat-card-actions>
-        <!-- <p>{{ today | date: 'HH:mm' }}</p> -->
-        <a mat-raised-button  color="warn" [routerLink]="['/shakes', product.codigo]">Elige tu {{product.producto}}</a>
+        <a mat-raised-button  color="warn" [routerLink]="['/crepes', product.codigo]">Elige tu {{product.producto}}</a>
     </mat-card-actions>
 </mat-card>
 

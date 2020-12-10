@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 // Componentes del módulo shake
 import { ShakedetailComponent } from '@shake/components/shakedetail/shakedetail.component';
 import { ShakesComponent } from '@shake/components/shakes/shakes.component';
-import { ShakeproductsComponent } from '@shake/containers/shakeproducts/shakeproducts.component';
+import { ShakeproductsContainer } from '@shake/containers/shakeproducts/shakeproducts.container';
 
 // módulo para enrutamiento del módulo shake
 import { ShakeRoutingModule } from '@shake/shake-routing.module';
@@ -17,7 +17,7 @@ import { MaterialModule } from '@material/material.module';
   declarations: [
     ShakesComponent,
     ShakedetailComponent,
-    ShakeproductsComponent
+    ShakeproductsContainer
   ],
   imports: [
     CommonModule,

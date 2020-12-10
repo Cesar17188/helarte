@@ -1,0 +1,5 @@
+<div class="product-grid">
+    <app-crepes *ngFor="let crepe of crepes" 
+    (productAdd)="clickProduct($event)" 
+    [product]='crepe'></app-crepes>  
+</div>

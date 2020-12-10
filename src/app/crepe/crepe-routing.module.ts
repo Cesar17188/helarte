@@ -1,12 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CrepeComponent } from './crepe.component';
+import { CrepesComponent } from './components/crepes/crepes.component';
 
-const routes: Routes = [{ path: '', component: CrepeComponent }];
+const routes: Routes = [
+  { path: '',
+    component: CrepesComponent
+  }
+];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forChild(routes)
+  ],
+  exports: [
+    RouterModule
+  ]
 })
 export class CrepeRoutingModule { }

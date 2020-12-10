@@ -7,7 +7,7 @@ import { Product } from '@core/models/product.model';
 })
 export class CrepesService {
 
-  idCrepe = 'VeHLjG6fV98aK5QjBIGg';
+  idCrepe = 'GWqmRRP5NhuTZeJK6wfp';
   docRef = this.firestore.collection('Productos').doc(this.idCrepe);
 
   constructor(
@@ -15,32 +15,32 @@ export class CrepesService {
   ) { }
 
   // tslint:disable-next-line: typedef
-  public createBackerie(data: Product) {
+  public createCrepe(data: Product) {
     return this.docRef.collection('crepes').add(data);
   }
 
 
   // tslint:disable-next-line: typedef
-  public getBackerie(codigo: string) {
+  public getCrepe(codigo: string) {
     return this.docRef.collection('crepes',
     ref => ref.where('codigo', '==', codigo)).snapshotChanges();
   }
 
   // tslint:disable-next-line: typedef
-  public getAllBackeries() {
+  public getAllCrepes() {
     return this.docRef.collection('crepes',
     ref => ref.orderBy('codigo', 'asc')).snapshotChanges();
   }
 
   // tslint:disable-next-line: typedef
-  public updateBackerie(documentId: string, partialData: Partial<Product>){
+  public updateCrepe(documentId: string, partialData: Partial<Product>){
     this.docRef.collection('crepes')
     .doc(documentId).update(partialData);
   }
 
 
   // tslint:disable-next-line: typedef
-  public deleteBackerie(documentId: string) {
+  public deleteCrepe(documentId: string) {
     this.docRef.collection('crepes').doc(documentId).delete();
   }
 }
