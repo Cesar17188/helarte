@@ -1,15 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { CafesComponent } from './components/cafes/cafes.component';
+import { CafeDetailComponent } from './components/cafe-detail/cafe-detail.component';
+import { CafesproductsContainer } from './containers/cafesproducts/cafesproducts.containers';
+
 import { CafeRoutingModule } from './cafe-routing.module';
-import { CafeComponent } from './cafe.component';
-
-
+import { ShareModule } from '@shared/shared.module';
+import { MaterialModule } from '@material/material.module';
 @NgModule({
-  declarations: [CafeComponent],
+  declarations: [
+    CafesComponent,
+    CafeDetailComponent,
+    CafesproductsContainer
+  ],
   imports: [
     CommonModule,
-    CafeRoutingModule
+    CafeRoutingModule,
+    ShareModule,
+    MaterialModule
   ]
 })
 export class CafeModule { }

@@ -1,11 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CrepesComponent } from './components/crepes/crepes.component';
+import { CrepesproductsContainer } from './containers/crepesproducts/crepesproducts.container';
+import { CrepeDetailComponent } from './components/crepe-detail/crepe-detail.component';
 
 const routes: Routes = [
-  { path: '',
-    component: CrepesComponent
+  {
+    path: '',
+    component: CrepesproductsContainer
+  },
+  {
+    path: ':codigo',
+    component: CrepeDetailComponent
   }
 ];
 
