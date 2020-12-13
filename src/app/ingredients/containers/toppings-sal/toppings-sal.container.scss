@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Rum+Raisin&display=swap");
+
+@media (min-width: 760px) {
+  .toppingsS {
+    max-width: 100%;
+    height: 80vh;
+  }
+  .product-grid {
+    display: contents;
+    justify-content: center;
+  }
+}
+@media (min-width: 1000px) {
+  .toppingsS {
+    max-width: 100%;
+    height: 80vh;
+    /* padding-left: 30px; */
+  }
+  .product-grid {
+    display: block;
+  }
+}
+
+.toppingsS {
+  max-width: 100%;
+  height: 80vh;
+}
+.product-grid {
+  display: block;
+  /* padding-left: 50px; */
+  text-align: center;
+  font-family: "Rum Raisin", sans-serif;
+}

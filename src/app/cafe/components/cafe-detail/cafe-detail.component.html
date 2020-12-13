@@ -1,1 +1,39 @@
-<p>cafe-detail works!</p>
+<div class="container">´
+    <mat-card class="cafe-card">
+        <mat-card-header class="header">
+            <h1>{{cafe[0].producto | titlecase}}</h1>
+        </mat-card-header>
+        <mat-dialog-content>
+            <div class="img">
+                <img [src]="cafe[0].img | async" alt="">
+            </div>
+            <div class="descr">
+                <div>
+                    <ul>
+                        <li><strong>Descripción: {{cafe[0].descripcion_larga}}</strong></li>
+                        <li><strong>Precio: {{cafe[0].precioVenta | currency}}</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </mat-dialog-content>
+        <mat-card-actions>
+            <div class="btntienda">
+                <div id="btntienda1">
+                    <button  mat-flat-button color="primary" (click)="addcart()">
+                        Añadir al carrito
+                        <span class="material-icons">
+                            shopping_cart
+                            </span>
+                    </button>
+                </div>
+                </div>
+                <div id="btntienda2">
+                    <button mat-flat-button color="primary" (click)="backClicked()">
+                        <span class="material-icons">
+                            arrow_back
+                            </span>
+                    </button>
+                </div>
+        </mat-card-actions>
+    </mat-card>
+</div>

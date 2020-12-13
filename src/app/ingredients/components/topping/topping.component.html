@@ -1,0 +1,11 @@
+<div class="topping">
+    <h3 mat-dialog-title>{{ toppingD.producto | uppercase }}</h3>
+    <div mat-dialog-content>
+        <img [src]="toppingD.img | async" alt="">
+    </div>
+    <div mat-dialog-actions>
+        <button mat-flat-button color="warn" 
+        [mat-dialog-close]="toppingD.codigo" 
+        cdkFocusInitial> Seleccionar </button>
+    </div>
+</div>

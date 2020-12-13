@@ -1,1 +1,102 @@
-<p>icecream-detail works!</p>
+<div class="container">
+    <mat-card class="icecream-card">
+        <mat-card-header class="header">
+           <h1>{{helado[0].producto | titlecase}}</h1> 
+        </mat-card-header>
+    <mat-card-content>
+        <div class="img">
+            <img [src]="helado[0].img | async" alt="">
+        </div>
+        <div class="descr">
+            <strong>
+                <ul>
+                    <li><strong> Descripcion : {{helado[0].descripcion_corta}}</strong></li>
+                    <li><strong> Precio : {{helado[0].precioVenta | currency}}</strong></li>  
+                    <li><strong><p>Elige tus sabores y adicionales presionando los botones</p></strong></li>
+                </ul>
+                
+                <div class="sabor" >
+                    <div id="sabor1">
+                        <h3 *ngIf="sabor">{{sabor[0].producto}}</h3>
+                        <img *ngIf="sabor" [src]="sabor[0].img | async" alt="{{sabor[0].producto}}">
+                        <button mat-raised-button color="warn" mat-raised-button (click)="selectFlavor()">
+                            Sabor 1
+                        </button>
+                    </div>
+                    <div id="sabor2">
+                        <h3 *ngIf="sabor2">{{sabor2[0].producto}}</h3>
+                        <img *ngIf="sabor2" [src]="sabor2[0].img | async" alt="">
+                        <button *ngIf="EneFlavorDos; else elseBlock1" mat-raised-button color="warn" mat-raised-button (click)="selectFlavordos()">
+                            Sabor 2
+                        </button>
+                        <ng-template #elseBlock1>
+                            <button mat-raised-button disabled>Sabor 2</button>
+                        </ng-template>
+                    </div>
+                    <div id="sabor3">
+                        <h3 *ngIf="sabor3">{{sabor3[0].producto}}</h3>
+                        <img *ngIf="sabor3" [src]="sabor3[0].img | async" alt="">
+                        <button *ngIf="EneFlavorTres; else elseBlock2 "mat-raised-button color="warn" mat-raised-button (click)="selectFlavortres()">
+                            Sabor 3
+                        </button>
+                        <ng-template #elseBlock2>
+                            <button mat-raised-button disabled>Sabor 3</button>
+                        </ng-template>
+                    </div>
+                </div>
+                <h2 *ngIf="flagSyrup">Adicionales</h2>
+                <div *ngIf="flagSyrup" class="sabor">
+                    <div id="sabor1">
+                        <h3 *ngIf="syrup">{{syrup[0].producto}}</h3>
+                        <img *ngIf="syrup" [src]="syrup[0].img | async" alt="">
+                        <button *ngIf="flagSyrup; else elseBlock2" mat-raised-button color="warn" mat-raised-button (click)="aditionSyrup()">
+                            Syrup
+                        </button>
+                        <ng-template #elseBlock2>
+                            <button mat-raised-button disabled>Syrup</button>
+                        </ng-template>
+                    </div>
+                    <div id="sabor2">
+                        <h3 *ngIf="toppingD">{{toppingD[0].producto}}</h3>
+                        <img *ngIf="toppingD" [src]="toppingD[0].img | async" alt="">
+                        <button *ngIf="flagSyrup; else elseBlock2 "mat-raised-button color="warn" mat-raised-button (click)="aditionToping()">
+                            Topping Dulce
+                        </button>
+                        <ng-template #elseBlock2>
+                            <button mat-raised-button disabled>Topping Dulce</button>
+                        </ng-template>
+                    </div>
+                </div>
+            <mat-slide-toggle class="crema" color="primary" [(ngModel)]="flagCrema">Agrega crema a tu helado por 50 ctvs.</mat-slide-toggle>
+        </strong>
+        </div>
+</mat-card-content>
+<mat-card-actions>
+    <div class="btntienda">
+        <div id="btntienda1" *ngIf="sabor; else elseBlock3">
+            <button  mat-flat-button color="primary" (click)="addcart()">
+                Añadir al carrito
+                <span class="material-icons">
+                    shopping_cart
+                </span>
+            </button>
+        </div>
+        <ng-template #elseBlock3>
+            <button mat-raised-button disabled>
+                Añadir al carrito
+                <span class="material-icons">
+                    shopping_cart
+                </span>
+            </button>
+        </ng-template>
+    </div>
+        <div id="btntienda2">
+            <button mat-flat-button color="primary" (click)="backClicked()">
+                <span class="material-icons">
+                    arrow_back
+                    </span>
+            </button>
+        </div>
+</mat-card-actions>
+</mat-card>
+</div>

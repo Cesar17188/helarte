@@ -1,1 +1,122 @@
-<p>crepe-detail works!</p>
+<div class="container">
+    <mat-card class="crepes-card">
+        <mat-card-header class="header">
+            <h1>{{crepe[0].producto | titlecase}}</h1>
+        </mat-card-header>
+        <mat-dialog-content>
+                <div class="img">
+                    <img [src]="crepe[0].img | async" alt="">
+                </div>
+                <div class="descr">
+                    <div>
+                        <ul>
+                            <li><strong>Descripción: {{crepe[0].descripcion_corta}}</strong></li>
+                            <li><strong>Precio: {{crepe[0].precioVenta | currency}}</strong></li>
+                            <li><strong><p>Elige los componentes de tu crepe presionando los botones</p></strong></li>
+                        </ul>
+                    </div>
+                    <div class="Dulce" *ngIf="crepeDulce; else crepeSal">
+                        <div class="sabor">
+                            <div id="sabor1">
+                                <h3 *ngIf="sabor">{{sabor[0].producto}}</h3>
+                                <img *ngIf="sabor" [src]="sabor[0].img | async" alt="{{sabor[0].producto}}">
+                                <button mat-raised-button color="warn" mat-raised-button (click)="selectFlavor()">
+                                    Sabor
+                                </button>
+                            </div>
+                            <div id="sabor2">
+                                <h3 *ngIf="fruta">{{fruta[0].producto}}</h3>
+                                <img *ngIf="fruta" [src]="fruta[0].img | async" alt="">
+                                <button mat-raised-button color="warn" mat-raised-button (click)="aditionFruta()">
+                                    Fruta
+                                </button>
+                            </div>
+                            <div id="sabor3">
+                                <h3 *ngIf="toppingD">{{toppingD[0].producto}}</h3>
+                                <img *ngIf="toppingD" [src]="toppingD[0].img | async" alt="">
+                                <button mat-raised-button color="warn" mat-raised-button (click)="aditionToping()">
+                                    Topping
+                                </button>
+                            </div>
+                        </div>
+                    <h2>Agregalos a tu elección</h2>
+                        <div class="sabor">
+                            <div id="sabor1">
+                                <h3 *ngIf="syrup">{{syrup[0].producto}}</h3>
+                                <img *ngIf="syrup" [src]="syrup[0].img | async" alt="">
+                                <button mat-raised-button color="warn" mat-raised-button (click)="aditionSyrup()">
+                                    Syrup
+                                </button>
+                            </div>
+                        </div>
+                        <mat-slide-toggle class="crema" color="primary" [(ngModel)]="flagCrema">Agrega crema a tu crepe</mat-slide-toggle>
+                    </div>
+                </div>
+            <ng-template #crepeSal>
+                <h2>Escoge tus Toppings Favoritos</h2>
+                <div class="sabor">
+                    <div id="sabor1">
+                        <h3 *ngIf="toppingS">{{toppingS[0].producto}}</h3>
+                        <img *ngIf="toppingS" [src]="toppingS[0].img | async" alt="{{toppingS[0].producto}}">
+                        <button mat-raised-button color="warn" mat-raised-button (click)="aditionTopingSal()">
+                            Topping de Sal 1
+                        </button>
+                    </div>
+                    <div id="sabor2">
+                        <h3 *ngIf="toppingS2">{{toppingS2[0].producto}}</h3>
+                        <img *ngIf="toppingS2" [src]="toppingS2[0].img | async" alt="">
+                        <button mat-raised-button color="warn" mat-raised-button (click)="aditionTopingSal2()">
+                            Topping de Sal 2
+                        </button>
+                    </div>
+                    <div id="sabor3">
+                        <h3 *ngIf="toppingS3">{{toppingS3[0].producto}}</h3>
+                        <img *ngIf="toppingS3" [src]="toppingS3[0].img | async" alt="">
+                        <button mat-raised-button color="warn" mat-raised-button (click)="aditionTopingSal3()">
+                            Topping de Sal 3
+                        </button>
+                    </div>
+                </div>
+            </ng-template>
+        </mat-dialog-content>
+        <mat-card-actions>
+            <div class="btntienda">
+                <div id="btntienda1" *ngIf="sabor && fruta && toppingD; else elseBlock3">
+                    <button  mat-flat-button color="primary" (click)="addcart()">
+                        Añadir al carrito
+                        <span class="material-icons">
+                            shopping_cart
+                            </span>
+                    </button>
+                </div>
+                <ng-template #elseBlock3>
+                    <div id="btntienda1" *ngIf="toppingS; else elseBlock4">
+                        <button  mat-flat-button color="primary" (click)="addcart()">
+                            Añadir al carrito
+                            <span class="material-icons">
+                                shopping_cart
+                                </span>
+                        </button>
+                    </div>
+                    <ng-template #elseBlock4>
+                        <button mat-raised-button disabled>
+                            Añadir al carrito
+                            <span class="material-icons">
+                                shopping_cart
+                            </span>
+                        </button>
+                    </ng-template>
+                </ng-template>
+            </div>
+                
+                <div id="btntienda2">
+                    <button mat-flat-button color="primary" (click)="backClicked()">
+                        <span class="material-icons">
+                            arrow_back
+                            </span>
+                    </button>
+                </div>
+        </mat-card-actions>
+    </mat-card>
+</div>
+ 

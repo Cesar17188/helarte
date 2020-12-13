@@ -1,0 +1,158 @@
+@import url("https://fonts.googleapis.com/css2?family=Rum+Raisin&display=swap");
+
+@media (min-width: 768px) {
+  .shake-card {
+    max-width: 100%;
+    margin: 2px;
+    border: 1px solid white;
+    border-radius: 5px;
+    position: relative;
+    display: block;
+  }
+  .img .descr {
+    display: block;
+  }
+
+  ul {
+    display: grid;
+  }
+  .sabor {
+    display: grid;
+    padding-left: 20px;
+  }
+  .img {
+    margin-top: 3px;
+    background-size: cover;
+    border-radius: 15px;
+    border: 1px solid white;
+    width: 50%;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    float: left;
+  }
+  .header {
+    font-family: "Rum Raisin", sans-serif;
+    justify-content: center;
+    color: #d2691e;
+  }
+  .sabor img {
+    width: 65%;
+    border-radius: 12px;
+  }
+  .descr h2 {
+    font-family: "Rum Raisin", sans-serif;
+    text-align: center;
+  }
+  .sabor div {
+    width: 150px;
+    padding: 0 0;
+    margin: 0;
+  }
+  #sabor1,
+  #sabor2,
+  #sabor3 {
+    text-align: center;
+  }
+  .sabor h3 {
+    font-family: "Satisfy", cursive;
+    margin-bottom: 10px;
+  }
+  .sabor button {
+    font-family: "Rum Raisin", sans-serif;
+  }
+}
+@media (min-width: 1024px) {
+  .shake-card {
+    min-width: 400px;
+    max-width: 100%;
+    margin: 2px;
+    border: 1px solid white;
+    border-radius: 5px;
+    display: block;
+  }
+}
+
+@media (min-width: 1400px) {
+  .shake-card {
+    min-width: 300px;
+    max-width: 100%;
+    margin: 2px;
+    border: 1px solid white;
+    border-radius: 5px;
+    display: block;
+  }
+}
+
+.header {
+  font-family: "Rum Raisin", sans-serif;
+  color: #d2691e;
+}
+
+.container {
+  margin: 0px;
+  width: 100%;
+}
+.shake-card {
+  background: -webkit-linear-gradient(
+    left,
+    rgba(147, 206, 222, 1) 0%,
+    rgba(117, 189, 209, 0.68) 41%,
+    rgba(51, 255, 238, 0.21) 100%
+  );
+  display: inline-block;
+}
+
+ul li {
+  font-family: "Rum Raisin", sans-serif;
+  font-size: large;
+}
+img {
+  margin-top: 3px;
+  background-size: cover;
+  border-radius: 15px;
+  border: 1px solid white;
+  width: 100%;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.sabor {
+  padding-left: 20px;
+  display: flex;
+}
+
+.sabor div {
+  width: 90%;
+  padding: 0 0;
+  margin: 0;
+  text-align: center;
+}
+
+.descr h2 {
+  text-align: center;
+  margin: 0px;
+}
+.sabor h3 {
+  font-family: "Rum Raisin", sans-serif;
+  margin-bottom: 10px;
+}
+.sabor button {
+  font-family: "Rum Raisin", sans-serif;
+  width: 95%;
+}
+
+.crema {
+  padding-left: 15px;
+}
+
+.btntienda #btntienda1 {
+  margin-bottom: 10px;
+}
+
+mat-card-actions {
+  text-align: center;
+}
+
+mat-card-actions button {
+  font-family: "Rum Raisin", sans-serif;
+}

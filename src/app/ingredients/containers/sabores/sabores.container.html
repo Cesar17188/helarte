@@ -1,0 +1,11 @@
+<div class="sabores">
+    <div class="product-grid">
+        <h2>Elige tu favorito</h2>
+        <app-flavor *ngFor="let sabor of sabores" 
+         (productAdd)="clickProduct($event)"
+        [product]='sabor'></app-flavor>  
+    </div>
+    <mat-dialog-actions>
+        <button mat-button mat-dialog-close>Cancelar</button>
+    </mat-dialog-actions>
+</div>
