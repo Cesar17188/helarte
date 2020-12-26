@@ -1,9 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AdminComponent } from './admin.component';
+import { NavComponent } from './component/nav/nav.component';
 
-const routes: Routes = [{ path: '', component: AdminComponent }];
+const routes: Routes = [
+  {
+    path: '',
+    component: NavComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
