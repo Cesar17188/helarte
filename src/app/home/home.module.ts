@@ -11,7 +11,7 @@ import { ProductsContainer } from '@home/containers/products/products.container'
 import { HomeRoutingModule } from '@home/home-routing.module';
 
 // módulos de carga de componentes externos complementarios
-import { ShareModule } from '@shared/shared.module';
+import { SharedModule } from '@shared/shared.module';
 import { MaterialModule } from '@material/material.module';
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { MaterialModule } from '@material/material.module';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    ShareModule,
+    SharedModule,
     MaterialModule
   ]
 })

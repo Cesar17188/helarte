@@ -6,7 +6,7 @@ import { CafeDetailComponent } from './components/cafe-detail/cafe-detail.compon
 import { CafesproductsContainer } from './containers/cafesproducts/cafesproducts.containers';
 
 import { CafeRoutingModule } from './cafe-routing.module';
-import { ShareModule } from '@shared/shared.module';
+import { SharedModule } from '@shared/shared.module';
 import { MaterialModule } from '@material/material.module';
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { MaterialModule } from '@material/material.module';
   imports: [
     CommonModule,
     CafeRoutingModule,
-    ShareModule,
+    SharedModule,
     MaterialModule
   ]
 })

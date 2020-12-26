@@ -11,7 +11,7 @@ import { ShakeproductsContainer } from '@shake/containers/shakeproducts/shakepro
 import { ShakeRoutingModule } from '@shake/shake-routing.module';
 
 // módulos de carga de componentes externos complementarios
-import { ShareModule } from '@shared/shared.module';
+import { SharedModule } from '@shared/shared.module';
 import { MaterialModule } from '@material/material.module';
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { MaterialModule } from '@material/material.module';
   imports: [
     CommonModule,
     ShakeRoutingModule,
-    ShareModule,
+    SharedModule,
     MaterialModule
   ]
 })

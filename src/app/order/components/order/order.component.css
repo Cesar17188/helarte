@@ -1,0 +1,27 @@
+@media (min-width: 760px) {
+  table img {
+    margin-top: 3px;
+    background-size: cover;
+    border-radius: 50px;
+    border: 1px solid white;
+    width: 70%;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+table {
+  width: 100%;
+}
+table img {
+  margin-top: 3px;
+  background-size: cover;
+  border-radius: 50px;
+  border: 1px solid white;
+  width: 50%;
+  margin: 0;
+  padding: 0;
+}
+
+.espacio {
+  flex: 1 1 auto;
+}

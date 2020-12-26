@@ -2,19 +2,25 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { LayoutModule } from '@angular/cdk/layout';
-
-import { MaterialModule } from '@material/material.module';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+
+import { MaterialModule } from '@material/material.module';
+
+import { CartPipe } from './pipes/cart.pipe';
+import { DeleteRepeatsPipe } from './pipes/deleteRepeats.pipe';
+import { RepeatNumberPipe } from './pipes/repeatNumberPipe.pipe';
 
 
 @NgModule({
   declarations: [
-    SidebarComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    SidebarComponent,
+    CartPipe,
+    DeleteRepeatsPipe,
+    RepeatNumberPipe
   ],
   imports: [
     CommonModule,
@@ -22,9 +28,12 @@ import { FooterComponent } from './components/footer/footer.component';
     MaterialModule
   ],
   exports: [
-    SidebarComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    SidebarComponent,
+    CartPipe,
+    DeleteRepeatsPipe,
+    RepeatNumberPipe
   ]
 })
-export class ShareModule { }
+export class SharedModule { }

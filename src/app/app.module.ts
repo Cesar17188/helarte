@@ -21,7 +21,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from 'src/environments/environment';
 
 // módulos del e-commerce
-import { ShareModule } from '@shared/shared.module';
+import { SharedModule } from '@shared/shared.module';
 import { ContactoModule } from '@contacto/contacto.module';
 import { CoreModule } from '@core/core.module';
 import { CrepeModule } from '@crepe/crepe.module';
@@ -42,7 +42,7 @@ import { PageNotFoundRoutingModule } from './page-not-found/page-not-found-routi
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    ShareModule,
+    SharedModule,
     ContactoModule,
     CoreModule,
     CrepeModule,

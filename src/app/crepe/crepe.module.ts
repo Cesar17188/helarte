@@ -6,7 +6,7 @@ import { CrepesproductsContainer } from './containers/crepesproducts/crepesprodu
 import { CrepeDetailComponent } from './components/crepe-detail/crepe-detail.component';
 
 import { CrepeRoutingModule } from './crepe-routing.module';
-import { ShareModule } from '@shared/shared.module';
+import { SharedModule } from '@shared/shared.module';
 import { MaterialModule } from '@material/material.module';
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { MaterialModule } from '@material/material.module';
   imports: [
     CommonModule,
     CrepeRoutingModule,
-    ShareModule,
+    SharedModule,
     MaterialModule
   ]
 })

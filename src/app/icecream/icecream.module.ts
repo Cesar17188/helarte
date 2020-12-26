@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { IcecreamRoutingModule } from './icecream-routing.module';
-import { ShareModule } from '@shared/shared.module';
+import { SharedModule } from '@shared/shared.module';
 import { MaterialModule } from '@material/material.module';
 
 import { IceproductsContainer } from './containers/iceproducts/iceproducts.container';
@@ -19,7 +19,7 @@ import { IngredientsModule } from '@ingredients/ingredients.module';
   imports: [
     CommonModule,
     IcecreamRoutingModule,
-    ShareModule,
+    SharedModule,
     MaterialModule,
     IngredientsModule
   ]
