@@ -12,14 +12,18 @@ const routes: Routes = [
     children: [
       {
         path: 'panel',
-        component: DashboardComponent
+        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {
         path: 'productos',
-        component: ListasComponent
+        loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
+      },
+      {
+        path: 'categorias',
+        loadChildren: () => import('./categories/categories.module').then(m => m.CategoriesModule)
       }
     ]
-  }
+  },
 ];
 
 @NgModule({

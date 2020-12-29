@@ -7,6 +7,7 @@
     <mat-nav-list>
       <a mat-list-item href="/home">Tienda</a>
       <a mat-list-item href="/admin/panel">Dashboard</a>
+      <a mat-list-item href="/admin/categorias">Categorias</a>
       <a mat-list-item href="/admin/productos">Productos</a>
     </mat-nav-list>
   </mat-sidenav>
@@ -22,6 +23,6 @@
       </button>
       <span>Helarte</span>
     </mat-toolbar>
-    <!-- Add Content Here -->
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
