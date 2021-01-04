@@ -15,7 +15,7 @@ export class HeladosService {
   ) { }
 
   // tslint:disable-next-line: typedef
-  public createHelado(data: HELADO) {
+  public createHelado(data: Partial<HELADO>) {
     return this.docRef.collection('Helados').add(data);
   }
 
