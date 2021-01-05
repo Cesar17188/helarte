@@ -1,6 +1,10 @@
 <form [formGroup]="form" (ngSubmit)="save()">
     <mat-card>
         <mat-card-header>
+            <mat-card-title>HELADOS</mat-card-title>
+            <mat-card-subtitle *ngIf="isNew">Crea un nuevo helado</mat-card-subtitle>
+            <mat-card-subtitle *ngIf="!isNew">Edita tu helado</mat-card-subtitle>
+        </mat-card-header>
             <mat-card-content>
                 <div class="row">
                     <div class="col-xs">
@@ -14,9 +18,6 @@
                                 <mat-error *ngIf="productField.hasError('minlength')">
                                     Mínimo debe tener 5 caracteres
                                 </mat-error>
-                                <!-- <mat-error *ngIf="productField.hasError('not_available')">
-                                    Este nombre ya lo tiene otra categoría
-                                </mat-error> -->
                             </div>
                         </mat-form-field>
                     </div>
@@ -71,7 +72,6 @@
                 </div>
                 <div class="row">
                     <div class="col-xs">
-                        <img *ngIf="imageField.value" [src]="imageField.value" alt=""/>
                         <button (click)="fileInput.click()" mat-mini-fab color="primary">
                             <mat-icon>perm_media</mat-icon>
                         </button>
@@ -81,6 +81,7 @@
                                 Este campo es requerido
                             </mat-error>
                         </div> 
+                        <img *ngIf="imageField.value" [src]="imageField.value | async" alt=""/>
                     </div>
                 </div>
             </mat-card-content>
@@ -89,7 +90,9 @@
                     <span *ngIf="isNew">Crear Helado</span>
                     <span *ngIf="!isNew">Guardar Helado</span>
                 </button>
+                <button mat-raised-button color="warn" (click)="backClicked()">
+                    Cancelar
+                </button>
             </mat-card-actions>
-        </mat-card-header>
     </mat-card>
 </form>

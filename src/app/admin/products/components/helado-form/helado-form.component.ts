@@ -1,12 +1,13 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { Location } from '@angular/common';
+
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { v4 as uuidv4 } from 'uuid';
 
 import { HELADO } from '@core/models/helado.model';
-import { HeladosService } from '@core/services/helados/helados.service';
 
 
 
@@ -34,7 +35,7 @@ export class HeladoFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private storage: AngularFireStorage,
-    private heladoService: HeladosService
+    private location: Location,
   ) {
     this.buildForm();
   }
@@ -49,7 +50,7 @@ export class HeladoFormComponent implements OnInit {
       descripcion_corta: ['', [Validators.required, Validators.minLength(10)]],
       descripcion_larga: ['', [Validators.required, Validators.minLength(25)]],
       precioVenta: [0, [Validators.required, Validators.min(1.00)]],
-      image: ['', Validators.required],
+      img: ['', Validators.required],
     });
   }
 
@@ -75,7 +76,7 @@ export class HeladoFormComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   get imageField() {
-    return this.form.get('image');
+    return this.form.get('img');
   }
 
   // tslint:disable-next-line:typedef
@@ -94,10 +95,10 @@ export class HeladoFormComponent implements OnInit {
   // tslint:disable-next-line:typedef
   uploadFile(event) {
     event.preventDefault();
-    const image = event.target.files[0];
+    const img = event.target.files[0];
     const name = `${uuidv4()}.png`;
     const ref = this.storage.ref(name);
-    const task = this.storage.upload(name, image);
+    const task = this.storage.upload(name, img);
 
     task.snapshotChanges()
     .pipe(
@@ -110,6 +111,11 @@ export class HeladoFormComponent implements OnInit {
       })
     )
     .subscribe();
+  }
+
+  // tslint:disable-next-line:typedef
+  backClicked() {
+    this.location.back();
   }
 
 }

@@ -6,13 +6,13 @@ input {
     border: 2px solid red;
   }
 }
-.messages {
-  opacity: 0;
-  transition: all 0.5s ease-in;
-  &.active {
-    opacity: 1;
-  }
-}
+// .messages {
+//   opacity: 0;
+//   transition: all 0.5s ease-in;
+//   &.active {
+//     opacity: 1;
+//   }
+// }
 
 form {
   mat-form-field {
@@ -21,4 +21,15 @@ form {
   mat-radio-group {
     padding-bottom: 20px;
   }
+}
+
+img {
+  margin-top: 3px;
+  background-size: cover;
+  border-radius: 15px;
+  border: 1px solid white;
+  width: 50%;
+  max-height: 284px;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }

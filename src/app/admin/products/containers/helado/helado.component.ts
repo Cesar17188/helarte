@@ -25,6 +25,7 @@ export class HeladoComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       if (params.codigo) {
+        console.log(params.codigo);
         this.getHelado(params.codigo);
       }
     });
@@ -64,6 +65,8 @@ export class HeladoComponent implements OnInit {
           precioVenta: e.payload.doc.data().precioVenta
         };
       });
+      this.helado = this.newHelado[0];
+      console.log(this.newHelado[0]);
     });
   }
 
