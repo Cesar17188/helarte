@@ -15,7 +15,8 @@
                 </h3>
               </mat-card-content>
               <mat-card-actions>
-                <button mat-raised-button [routerLink]="['edit', product.codigo]">Editar</button>
+                <button mat-raised-button color="accent" [routerLink]="['edit', product.codigo]">Editar</button>
+                <button mat-raised-button color="primary" routerLink="/admin/productos">Productos</button>
                 <!-- <button mat-raised-button color="warn">Eliminar</button> -->
               </mat-card-actions>
           </mat-card>

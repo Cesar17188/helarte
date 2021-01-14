@@ -1,0 +1,28 @@
+input {
+  &.is-valid {
+    border: 2px solid green;
+  }
+  &.is-invalid {
+    border: 2px solid red;
+  }
+}
+
+form {
+  mat-form-field {
+    width: 100%;
+  }
+  mat-radio-group {
+    padding-bottom: 20px;
+  }
+}
+
+img {
+  margin-top: 3px;
+  background-size: cover;
+  border-radius: 15px;
+  border: 1px solid white;
+  width: 50%;
+  max-height: 284px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}

@@ -30,7 +30,7 @@ export class CrepesComponent implements OnInit {
         const ref = this.storage.storage.refFromURL(e.payload.doc.data().image);
         this.img = ref.getDownloadURL();
         return {
-          id: e.payload.doc.data().uid,
+          id: e.payload.doc.id,
           codigo: e.payload.doc.data().codigo,
           producto: e.payload.doc.data().producto,
           precioVenta: e.payload.doc.data().precioVenta,
