@@ -45,8 +45,8 @@ export class HeladoComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   updateHelado(data) {
-    this.heladoService.updateHelado(this.newHelado[0].id, data);
     console.log(data);
+    this.heladoService.updateHelado(this.newHelado[0].id, data);
     this.router.navigate(['./admin/productos']);
   }
 
@@ -57,6 +57,7 @@ export class HeladoComponent implements OnInit {
         const ref = this.storage.storage.refFromURL(e.payload.doc.data().image);
         this.img = ref.getDownloadURL();
         return {
+          id: e.payload.doc.id,
           codigo: e.payload.doc.data().codigo,
           producto: e.payload.doc.data().producto,
           img: this.img,
@@ -66,6 +67,7 @@ export class HeladoComponent implements OnInit {
         };
       });
       this.helado = this.newHelado[0];
+      this.helado.image = this.img;
       console.log(this.newHelado[0]);
     });
   }

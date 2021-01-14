@@ -46,12 +46,18 @@ export class HeladoFormComponent implements OnInit {
   // tslint:disable-next-line:typedef
   private buildForm() {
     this.form = this.formBuilder.group({
+      codigo: ['', [Validators.required]],
       producto: ['', [Validators.required, Validators.minLength(5)]],
       descripcion_corta: ['', [Validators.required, Validators.minLength(10)]],
       descripcion_larga: ['', [Validators.required, Validators.minLength(25)]],
       precioVenta: [0, [Validators.required, Validators.min(1.00)]],
-      img: ['', Validators.required],
+      image: ['', Validators.required],
     });
+  }
+
+  // tslint:disable-next-line:typedef
+  get codigoField() {
+    return this.form.get('codigo');
   }
 
   // tslint:disable-next-line:typedef
@@ -76,7 +82,7 @@ export class HeladoFormComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   get imageField() {
-    return this.form.get('img');
+    return this.form.get('image');
   }
 
   // tslint:disable-next-line:typedef
@@ -103,10 +109,11 @@ export class HeladoFormComponent implements OnInit {
     task.snapshotChanges()
     .pipe(
       finalize(() => {
-        const urlImage$ = ref.getDownloadURL();
-        urlImage$.subscribe(url => {
+        this.image$ = ref.getDownloadURL();
+        this.image$.subscribe(url => {
           console.log(url);
           this.imageField.setValue(url);
+          console.log(this.imageField);
         });
       })
     )

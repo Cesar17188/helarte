@@ -13,6 +13,7 @@ export class HeladosComponent implements OnInit {
   img: any;
   data: any;
   displayedColumns: string[] = ['codigo', 'helado', 'precio', 'actions'];
+  uid;
 
   constructor(
     private heladosService: HeladosService,
@@ -30,7 +31,7 @@ export class HeladosComponent implements OnInit {
         const ref = this.storage.storage.refFromURL(e.payload.doc.data().image);
         this.img = ref.getDownloadURL();
         return {
-          id: e.payload.doc.data().uid,
+          id: e.payload.doc.id,
           codigo: e.payload.doc.data().codigo,
           producto: e.payload.doc.data().producto,
           precioVenta: e.payload.doc.data().precioVenta,
@@ -45,6 +46,7 @@ export class HeladosComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   deleteHelado(documentId: string) {
+    console.log(documentId);
     this.heladosService.deleteHelado(documentId);
   }
 

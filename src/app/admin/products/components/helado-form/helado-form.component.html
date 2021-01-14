@@ -9,6 +9,19 @@
                 <div class="row">
                     <div class="col-xs">
                         <mat-form-field>
+                            <mat-label>Codigo</mat-label>
+                            <input placeholder="h0010" formControlName="codigo" matInput type="text">
+                            <div class="messages" *ngIf="codigoField.touched && codigoField.invalid">
+                                <mat-error *ngIf="codigoField.hasError('required')">
+                                    Este campo es requerido
+                                </mat-error>
+                            </div>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs">
+                        <mat-form-field>
                             <mat-label>Producto</mat-label>
                             <input placeholder="Producto" formControlName="producto" matInput type="text">
                             <div class="messages" *ngIf="productField.touched && productField.invalid">
@@ -81,7 +94,8 @@
                                 Este campo es requerido
                             </mat-error>
                         </div> 
-                        <img *ngIf="imageField.value" [src]="imageField.value | async" alt=""/>
+                        <img *ngIf="isNew || (image$ | async) as image" [src]="image" alt=""/>
+                        <img *ngIf="imageField.value" [src]="imageField.value | async" alt="">
                     </div>
                 </div>
             </mat-card-content>
