@@ -1,6 +1,8 @@
 import { Observable } from 'rxjs';
 
 export interface TOPPING {
+    [x: string]: any;
+    id?: string;
     codigo?: string;
     producto?: string;
     image?: string;

@@ -1,24 +1,26 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../../environments/environment';
 import { TOPPING } from '@core/models/topping.model';
-
-import { ToppingSalService } from '@core/services/topping-sal/topping-sal.service';
+import { STOCK } from '@core/models/stock.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ToppingsSalService {
 
-  idToppingS = '807wd7iFM8JV8o27h8P5';
-  docRef = this.firestore.collection('inventario').doc(this.idToppingS);
-
   constructor(
-    private firestore: AngularFirestore,
+
+    private http: HttpClient
   ) { }
 
   // tslint:disable-next-line:typedef
   public getAllStocks(){
-    return this.docRef.collection('toppings_sal', ref => ref.
-            orderBy('codigo', 'asc').firestore.collectionGroup('stock')).valueChanges();
+    return this.http.get<TOPPING[]>(`${environment.url_firestore}/807wd7iFM8JV8o27h8P5/toppings_sal/${environment.url_key}`);
+  }
+
+  // tslint:disable-next-line:typedef
+  public getStock(){
+    return this.http.get<STOCK>(`${environment.url_firestore}/807wd7iFM8JV8o27h8P5/toppings_sal/l7fVHKpdBBXmsnYJCWVU/stock/${environment.url_key}`);
   }
 }

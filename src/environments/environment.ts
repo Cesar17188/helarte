@@ -12,7 +12,9 @@ export const environment = {
     messagingSenderId: '537447745109',
     appId: '1:537447745109:web:7a5cb7f744dd3a41e0b6dc',
     measurementId: 'G-R9KP9557GZ'
-  }
+  },
+  url_firestore: 'https://firestore.googleapis.com/v1/projects/helarte-bb3a0/databases/(default)/documents/inventario',
+  url_key: '?key=AIzaSyARiQncLn6XX0tcrWqhhe3gbeKtj4z0D7U'
 };
 
 /*

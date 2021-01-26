@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
-import { ListasComponent } from './component/listas/listas.component';
-
 import { NavComponent } from './component/nav/nav.component';
 
 const routes: Routes = [
@@ -21,6 +19,10 @@ const routes: Routes = [
       {
         path: 'categorias',
         loadChildren: () => import('./categories/categories.module').then(m => m.CategoriesModule)
+      },
+      {
+        path: 'inventario',
+        loadChildren: () => import('./inventario/inventario.module').then(m => m.InventarioModule)
       }
     ]
   },

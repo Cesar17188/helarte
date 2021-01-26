@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { STOCK } from '@core/models/stock.model';
+import { TOPPING } from '@core/models/topping.model';
 import { ToppingsSalService } from '@core/services/inventario/toppingsSal/toppings-sal.service';
+import { ToppingSalService } from '@core/services/topping-sal/topping-sal.service';
 
 @Component({
   selector: 'app-toppings-sal',
@@ -10,35 +13,47 @@ import { ToppingsSalService } from '@core/services/inventario/toppingsSal/toppin
 export class ToppingsSalComponent implements OnInit {
 
   inventario = [];
+  toppingsS: TOPPING[];
+  ItoppingS4: STOCK[];
   img: any;
 
   constructor(
     private iToppingSalService: ToppingsSalService,
-    private storage: AngularFireStorage
   ) { }
 
   ngOnInit(): void {
-    this.fetchIToppingsSal();
+    // this.fetchToppings();
+    // this.getInventario4();
   }
 
-  // tslint:disable-next-line:typedef
-  fetchIToppingsSal() {
-    this.iToppingSalService.getAllStocks().subscribe(data => {
-      this.inventario = data.map( e => {
-        const ref = this.storage.storage.refFromURL(e.payload.doc.data().image);
-        this.img = ref.getDownloadURL();
-        return {
-          id: e.payload.doc.id,
-          codigo: e.payload.doc.data().codigo,
-          producto: e.payload.doc.data().producto,
-          precioVenta: e.payload.doc.data().precioVenta,
-          img: this.img,
-          descripcion_corta: e.payload.doc.data().descripcion_corta,
-          descripcion_larga: e.payload.doc.data().descripcion_larga
-        };
-      });
-      console.log(this.inventario);
-    });
-  }
+  // // tslint:disable-next-line:typedef
+  // fetchToppings() {
+  //   this.iToppingSalService.getAllStocks()
+  //   .subscribe(data => {
+  //     this.toppingsS = data.documents.map (e => {
+  //       return {
+  //         codigo: e.fields.codigo.stringValue,
+  //         producto: e.fields.producto.stringValue,
+  //         descripcion_corta: e.fields.descripcion_corta.stringValue,
+  //         descripcion_larga: e.fields.descripcion_larga.stringValue
+  //       };
+  //     });
+  //     console.log(this.toppingsS);
+  //   });
+  // }
+
+  // // tslint:disable-next-line:typedef
+  // getInventario4() {
+  //   this.iToppingSalService.getStock()
+  //   .subscribe(data => {
+  //     this.ItoppingS4 = data.documents.map(e => {
+  //       return {
+  //         codigo: e.fields.codigo.stringValue,
+  //         stock: JSON.parse(JSON.stringify(e.fields.stock.integerValue))
+  //       };
+  //     });
+  //     console.log(this.ItoppingS4);
+  //   });
+  // }
 
 }
