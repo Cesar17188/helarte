@@ -20,6 +20,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from 'src/environments/environment';
+import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 
 // módulos del e-commerce
 import { SharedModule } from '@shared/shared.module';
@@ -55,6 +56,7 @@ import { PageNotFoundRoutingModule } from './page-not-found/page-not-found-routi
     AuthModule,
     PageNotFoundRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
+    NgxAuthFirebaseUIModule.forRoot(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAnalyticsModule,
     AngularFirestoreModule,
