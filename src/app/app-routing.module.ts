@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { AdminGuard } from '@guardianes/admin/admin.guard';
 import { LayoutComponent } from './layout/layout.component';
 
 /* Rutas de acceso a los diferentes módulos y páginas
@@ -60,7 +61,8 @@ const routes: Routes = [
     },
     {
         path: 'admin',
-        loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+        loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
+        canActivate: [AdminGuard]
     },
     {
         path: '**',

@@ -7,11 +7,10 @@
     shopping_cart</mat-icon>
 </a>
 
-<!-- <a *ngIf="user$ | async as user; else login" routerLink="/perfil">
-    <img 
-    mat-card-avatar [src]="user?.photoURL" alt="">
+<a class="avatar" *ngIf="user$ | async as user; else login" routerLink="/perfil">
+   <ngx-auth-firebaseui-avatar [links]="links"></ngx-auth-firebaseui-avatar>
 </a> 
 
-<ng-template #login>
+<ng-template class="avatar" #login>
     <button mat-button (click)="openLogin()">Login</button>
-</ng-template> -->
+</ng-template>

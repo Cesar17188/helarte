@@ -7,6 +7,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 import { MaterialModule } from '@material/material.module';
+import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 
 import { CartPipe } from './pipes/cart.pipe';
 import { DeleteRepeatsPipe } from './pipes/deleteRepeats.pipe';
@@ -25,7 +26,8 @@ import { RepeatNumberPipe } from './pipes/repeatNumberPipe.pipe';
   imports: [
     CommonModule,
     RouterModule,
-    MaterialModule
+    MaterialModule,
+    NgxAuthFirebaseUIModule
   ],
   exports: [
     HeaderComponent,

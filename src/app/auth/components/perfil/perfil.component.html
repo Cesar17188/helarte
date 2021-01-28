@@ -1,0 +1,20 @@
+<mat-card class="perfil">
+    <mat-card-header>
+        <img class="avatar" mat-card-avatar [src]="user?.photoURL" [alt]="user?.displayName">
+        <mat-card-title>{{user.displayName}}</mat-card-title>
+        <mat-card-subtitle>{{user.role}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="user?.photoURL" [alt]="user?.displayName">
+    <mat-card-content>
+        <h3>Nombre de usuario: {{user.displayName}}</h3>
+        <h3>Correo electrónico: {{user.email}}</h3>
+        <h3>Role: {{user.role}}</h3>
+    </mat-card-content>
+    <mat-card-actions *ngIf="user.role === 'ADMIN'; else client">
+        <a mat-raised-button color="primary" routerLink="/admin">Panel Administrador</a>
+    </mat-card-actions>
+    <ng-template #client>
+        <a mat-raised-button color="primary" routerLink="/home">Tienda</a>
+    </ng-template>
+</mat-card>
+
