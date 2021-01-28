@@ -7,7 +7,6 @@ import { CafesService } from './services/cafes/cafes.service';
 import { HeladosService } from './services/helados/helados.service';
 import { SaboresService } from './services/sabores/sabores.service';
 import { CartService } from './services/cart/cart.service';
-import { ToppingsSalService } from './services/inventario/toppingsSal/toppings-sal.service';
 import { AuthService } from './services/auth/auth.service';
 
 @NgModule({
@@ -23,7 +22,6 @@ import { AuthService } from './services/auth/auth.service';
     SaboresService,
     CartService,
     AuthService,
-    ToppingsSalService
   ]
 })
 export class CoreModule { }
