@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { AdminGuard } from '@guardianes/admin/admin.guard';
 import { LayoutComponent } from './layout/layout.component';
+import { QuicklinkStrategy } from 'ngx-quicklink';
 
 /* Rutas de acceso a los diferentes módulos y páginas
 independientes del e-commerce mediante lazy loading.*/
@@ -73,7 +74,7 @@ const routes: Routes = [
 @NgModule({
     imports: [
         RouterModule.forRoot(routes, {
-        preloadingStrategy: PreloadAllModules,
+        preloadingStrategy: QuicklinkStrategy,
     })],
     exports: [
         RouterModule
