@@ -35,6 +35,7 @@ import { CafeModule } from '@cafe/cafe.module';
 import { ShakeModule } from '@shake/shake.module';
 import { AuthModule } from '@auth/auth.module';
 import { PageNotFoundRoutingModule } from './page-not-found/page-not-found-routing.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { PageNotFoundRoutingModule } from './page-not-found/page-not-found-routi
     LayoutComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,
@@ -64,7 +65,8 @@ import { PageNotFoundRoutingModule } from './page-not-found/page-not-found-routi
     AngularFireAuthModule,
     AngularFireStorageModule,
     HttpClientModule,
-    QuicklinkModule
+    QuicklinkModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
