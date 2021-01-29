@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/helarte",
+    "public": "dist/helarte/browser",
     "ignore": [
       "firebase.json",
       "**/.*",
