@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireStorage } from '@angular/fire/storage';
 import { STOCK } from '@core/models/stock.model';
 import { TOPPING } from '@core/models/topping.model';
 
@@ -12,7 +13,8 @@ export class InventarioToppingSalService {
   idToppingS = '807wd7iFM8JV8o27h8P5';
 
   constructor(
-    private firestore: AngularFirestore
+    private firestore: AngularFirestore,
+    private afs: AngularFireStorage
   ) { }
 
   // tslint:disable-next-line:typedef
@@ -20,6 +22,12 @@ export class InventarioToppingSalService {
     const docRef = this.firestore.collection<TOPPING>('inventario').doc(this.idToppingS)
     .collection('toppings_sal').doc(docid);
     return docRef.collection('stock').snapshotChanges();
+  }
+
+  // tslint:disable-next-line:typedef
+  getAllStocks() {
+    return this.firestore.collection<TOPPING>('inventario').doc(this.idToppingS)
+    .collection('toppings_sal').snapshotChanges();
   }
 
 }

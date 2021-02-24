@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { STOCK } from '@core/models/stock.model';
 import { TOPPING } from '@core/models/topping.model';
@@ -10,6 +10,10 @@ import { ToppingSalService } from '@core/services/topping-sal/topping-sal.servic
   styleUrls: ['./toppings-sal.component.scss']
 })
 export class ToppingsSalComponent implements OnInit {
+
+  @Input() ToppingsStock: any[];
+
+  displayedColumns: string[] = ['Producto', 'Stock', 'Tipo'];
 
 
   constructor(
