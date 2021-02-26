@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { STOCK } from '@core/models/stock.model';
 import { TOPPING } from '@core/models/topping.model';
-
 
 @Injectable({
   providedIn: 'root'
 })
-export class InventarioToppingSalService {
+export class InventarioToppingDulceService {
 
-  idToppingS = '807wd7iFM8JV8o27h8P5';
+  idToppingD = 'FedRafyDEClXfXuolZyE';
 
   constructor(
     private firestore: AngularFirestore
@@ -17,15 +15,14 @@ export class InventarioToppingSalService {
 
   // tslint:disable-next-line:typedef
   getStock(docid: string) {
-    const docRef = this.firestore.collection<TOPPING>('inventario').doc(this.idToppingS)
-    .collection('toppings_sal').doc(docid);
+    const docRef = this.firestore.collection<TOPPING>('inventario').doc(this.idToppingD)
+    .collection('toppings_dulce').doc(docid);
     return docRef.collection('stock').snapshotChanges();
   }
 
   // tslint:disable-next-line:typedef
   getAllStocks() {
-    return this.firestore.collection<TOPPING>('inventario').doc(this.idToppingS)
-    .collection('toppings_sal').snapshotChanges();
+    return this.firestore.collection<TOPPING>('inventario').doc(this.idToppingD)
+    .collection('toppings_dulce').snapshotChanges();
   }
-
 }

@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs';
 
 export interface SABOR {
+    id?: string;
     codigo?: string;
     producto?: string;
     image?: string;

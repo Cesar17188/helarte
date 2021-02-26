@@ -1,13 +1,8 @@
-import { Component, OnDestroy, OnInit} from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFireStorage } from '@angular/fire/storage';
+import { Component, OnInit} from '@angular/core';
 import { STOCK } from '@core/models/stock.model';
 import { TOPPING } from '@core/models/topping.model';
 import { InventarioToppingSalService } from '@core/services/inventario/inventario-topping-sal/inventario-topping-sal.service';
 import { ToppingSalService } from '@core/services/topping-sal/topping-sal.service';
-import { merge } from 'rxjs';
-import { concatMap, switchMap } from 'rxjs/operators';
-
 @Component({
   selector: 'app-toppings-sal-container',
   templateUrl: './toppings-sal-container.component.html',
@@ -34,7 +29,6 @@ export class ToppingsSalContainerComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchToppingSal();
-    // this.fetchToppingSalConcat();
   }
 
 
@@ -80,7 +74,6 @@ export class ToppingsSalContainerComponent implements OnInit {
           };
         });
         this.stockSalami = [Object.assign(this.toppings[1], this.salami)];
-        // this.stockSalami = [this.toppings[1]].concat(this.salami);
       });
     }
       // tslint:disable-next-line:typedef
@@ -94,7 +87,6 @@ export class ToppingsSalContainerComponent implements OnInit {
         };
       });
       this.stockPollo = [Object.assign(this.toppings[2], this.pollo)];
-      // this.stockPollo = [this.toppings[2]].concat(this.pollo);
     });
   }
     // tslint:disable-next-line:typedef
@@ -108,7 +100,6 @@ export class ToppingsSalContainerComponent implements OnInit {
           };
         });
         this.stockJamon = [Object.assign(this.toppings[3], this.jamon)];
-        // this.stockJamon = [this.toppings[3]].concat(this.jamon);
         this.stocks = this.stockQueso.concat(this.stockSalami, this.stockPollo, this.stockJamon);
         console.log(this.stocks);
       });

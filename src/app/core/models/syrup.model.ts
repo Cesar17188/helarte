@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs';
 
 export interface SYRUP {
+    id?: string;
     codigo?: string;
     producto?: string;
     image?: string;
