@@ -7,6 +7,7 @@ import { ToppingsDulceContainerComponent } from './containers/toppings-dulce-con
 import { SyrupsContainerComponent } from './containers/syrups-container/syrups-container.component';
 import { SaboresContainerComponent } from './containers/sabores-container/sabores-container.component';
 import { FrutasContainerComponent } from './containers/frutas-container/frutas-container.component';
+import { CremaContainerComponent } from './containers/crema-container/crema-container.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'frutas',
     component: FrutasContainerComponent
+  },
+  {
+    path: 'crema',
+    component: CremaContainerComponent
   }
 ];
 

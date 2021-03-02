@@ -15,6 +15,8 @@ import { SaboresComponent } from './components/sabores/sabores.component';
 import { SaboresContainerComponent } from './containers/sabores-container/sabores-container.component';
 import { FrutasContainerComponent } from './containers/frutas-container/frutas-container.component';
 import { FrutasComponent } from './components/frutas/frutas.component';
+import { CremaContainerComponent } from './containers/crema-container/crema-container.component';
+import { CremaComponent } from './components/crema/crema.component';
 @NgModule({
   declarations: [
     ToppingsSalComponent,
@@ -27,7 +29,9 @@ import { FrutasComponent } from './components/frutas/frutas.component';
     SaboresComponent,
     SaboresContainerComponent,
     FrutasContainerComponent,
-    FrutasComponent
+    FrutasComponent,
+    CremaContainerComponent,
+    CremaComponent
   ],
   imports: [
     CommonModule,
