@@ -46,7 +46,7 @@ export class CafeDetailComponent implements OnInit {
           img: this.img,
           descripcion_corta: e.payload.doc.data().descripcion_corta,
           descripcion_larga: e.payload.doc.data().descripcion_larga,
-          precioVenta: e.payload.doc.data().precioVenta
+          precioVenta: e.payload.doc.data().precioVenta,
         };
       });
     });
@@ -62,6 +62,7 @@ export class CafeDetailComponent implements OnInit {
       img: this.cafe[0].img,
     };
     this.cartService.addCart(this.newCafe);
+    // this.cartService.changeCart(this.newCafe);
   }
 
   // tslint:disable-next-line:typedef

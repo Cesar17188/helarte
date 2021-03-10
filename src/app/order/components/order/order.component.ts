@@ -12,7 +12,7 @@ import { map } from 'rxjs/operators';
 export class OrderComponent implements OnInit {
 
   products$: Observable<Product[]>;
-  displayedColumns: string[] = ['Imagen', 'Producto', 'Adicionales', 'Fruta', 'Precio'];
+  displayedColumns: string[] = ['Imagen', 'Producto', 'Adicionales', 'Fruta', 'Precio', 'actions'];
 
   constructor(
     private cartService: CartService
@@ -22,6 +22,7 @@ export class OrderComponent implements OnInit {
       const distintos = [...new Set(products)];
       return distintos;
     }));
+    console.log(this.products$);
     }
 
   // tslint:disable-next-line:typedef
@@ -29,7 +30,14 @@ export class OrderComponent implements OnInit {
    return this.cartService.totalCart();
   }
 
+  // tslint:disable-next-line:typedef
+  public remove()
+  {
+    this.cartService.removeElementCart();
+  }
+
   ngOnInit(): void {
+
   }
 
 }

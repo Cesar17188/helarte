@@ -26,4 +26,10 @@ export class CartService {
     return this.products.map(t => t.precioVenta)
     .reduce((acc, value) => acc + value);
   }
+
+  // tslint:disable-next-line:typedef
+  removeElementCart(){
+    this.products.splice(0, 1);
+    this.cart.next(this.products);
+  }
 }

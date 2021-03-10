@@ -7,6 +7,7 @@ import { SYRUP } from './syrup.model';
 import { TOPPING } from './topping.model';
 
 export interface Product {
+    id?: string;
     codigo?: string;
     producto?: string;
     sabores?: SABOR[];
@@ -28,5 +29,6 @@ export interface Product {
     precioCompra?: number;
     precioVenta?: number;
     userUid?: string;
+    quantity?: number;
 }
 
