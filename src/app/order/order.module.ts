@@ -8,10 +8,12 @@ import { DatosPersonalesComponent } from './components/datos-personales/datos-pe
 
 import { MaterialModule } from '@material/material.module';
 import { SharedModule } from '@shared/shared.module';
+import { CartComponent } from './container/cart/cart.component';
 @NgModule({
   declarations: [
     OrderComponent,
-    DatosPersonalesComponent
+    DatosPersonalesComponent,
+    CartComponent
   ],
   imports: [
     CommonModule,

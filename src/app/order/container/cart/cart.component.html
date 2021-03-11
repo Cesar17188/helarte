@@ -1,0 +1,111 @@
+<div *ngIf="(products$ | async ) as products">
+    <p *ngIf="products.length == 0">No hay productos</p>
+    <table mat-table [dataSource]="products | deleteRepeats" class="mat-elevation-z8">
+        <ng-container matColumnDef="Imagen">
+            <th mat-header-cell *matHeaderCellDef> Imagen </th>
+            <td mat-cell *matCellDef="let products">
+                <img [src]="products.img | async" alt="">
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Producto">
+            <th mat-header-cell *matHeaderCellDef> Producto </th>
+            <td mat-cell *matCellDef="let products">{{products.producto}}
+                <ul *ngIf="products.sabores != null; else toppingss">
+                    <li *ngIf="products.sabores[0] != null">
+                       {{products.sabores[0].producto}}
+                    </li>
+                    <li *ngIf="products.sabores[1] != null">
+                     {{products.sabores[1].producto}}
+                  </li>
+                  <li *ngIf="products.sabores[2] != null">
+                     {{products.sabores[2].producto}}
+                  </li>
+                </ul>
+                <ng-template #toppingss>
+                    <ul *ngIf="products.ToppingsS != null">
+                        <li *ngIf="products.toppingsS[0] != null">
+                           {{products.toppingsS[0].producto}}
+                        </li>
+                        <li *ngIf="products.toppingsS[1] != null">
+                         {{products.toppingsS[1].producto}}
+                      </li>
+                      <li *ngIf="products.toppingsS[2] != null">
+                         {{products.toppingsS[2].producto}}
+                      </li>
+                    </ul>
+                </ng-template>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Adicionales">
+            <th mat-header-cell *matHeaderCellDef> Adicionales </th>
+            <td mat-cell *matCellDef="let products">
+                <ul>
+                    <li *ngIf="products.crema != null">
+                       {{products.crema.producto}}
+                    </li>
+                    <li *ngIf="products.syrups != null">
+                        {{products.syrups[0].producto}}
+                     </li>
+                    <li *ngIf="products.toppingsD != null">
+                     {{products.toppingsD.producto}}
+                  </li>
+                  <li *ngIf="products.leche">
+                    con leche
+                  </li>
+                </ul>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Fruta">
+            <th mat-header-cell *matHeaderCellDef> Fruta </th>
+            <td mat-cell *matCellDef="let products">
+                <ul *ngIf="products.fruta != null">
+                    <li *ngIf="products.fruta[0] != null">
+                       {{products.fruta[0].producto}}
+                    </li>
+                    <li *ngIf="products.fruta[1] != null">
+                        {{products.fruta[1].producto}}
+                     </li>
+                </ul>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Precio">
+            <th mat-header-cell *matHeaderCellDef> Precio </th>
+            <td mat-cell *matCellDef="let products">
+               <ul>
+                   <li *ngIf="!products.crema">
+                        {{products.precioVenta | currency}}
+                   </li>
+                   <li *ngIf="products.crema">
+                        {{products.precioVenta | currency}}
+                   </li>
+               </ul>
+            </td>
+        </ng-container>
+
+        <!-- Columna Acciones-->
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Acciones </th>
+            <td mat-cell *matCellDef="let products"> 
+            <button mat-mini-fab color="warn" aria-label="boton con icono eliminar"
+                (click)="remove(products.producto)">
+                <mat-icon>delete</mat-icon>
+            </button>   
+            </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <div *ngIf="products.length != 0">
+        <mat-toolbar>
+            <span>Total</span>
+            <span class="espacio"></span>
+            <span>{{getTotalPrice() | currency}}</span>
+        </mat-toolbar>
+    </div>
+</div>
