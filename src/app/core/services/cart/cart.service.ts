@@ -32,4 +32,9 @@ export class CartService {
     this.products.splice(0, 1);
     this.cart.next(this.products);
   }
+
+  // tslint:disable-next-line:typedef
+  getProducts(){
+    return this.cart.getValue();
+  }
 }

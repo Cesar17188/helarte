@@ -43,7 +43,7 @@ export class CremaContainerComponent implements OnInit {
 
     // tslint:disable-next-line:typedef
     fetchInventarioCrema(id: string){
-      this.inventarioCremaService.getStock(id)
+      this.inventarioCremaService.getStock()
       .subscribe(data => {
         this.stock = data.map( e => {
           return {

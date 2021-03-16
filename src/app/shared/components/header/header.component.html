@@ -7,7 +7,7 @@
     shopping_cart</mat-icon>
 </a>
 
-<a class="avatar" *ngIf="user$ | async as user; else login" routerLink="/perfil">
+<a class="avatar" *ngIf="user$ | async as user; else login">
    <ngx-auth-firebaseui-avatar [links]="links"></ngx-auth-firebaseui-avatar>
 </a> 
 

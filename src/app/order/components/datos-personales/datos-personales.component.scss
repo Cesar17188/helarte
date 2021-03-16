@@ -1,31 +1,39 @@
-.tab1 {
+.perfil {
+  max-width: 400px;
   margin: auto;
 }
-mat-tab-group {
-  margin: auto;
-}
-
-.franja {
-  padding: auto;
-}
-
-.franja img {
-  max-height: 300px;
-  filter: grayscale(70%);
-  border: 1px solid white;
+.avatar {
   background-size: cover;
-  border-radius: 15px;
 }
-.descripcion {
-  position: absolute;
-  top: 45%;
-  left: 5%;
-  text-align: center;
-  color: white;
-  font-size: x-large;
+
+a {
+  width: 100%;
+  display: block;
 }
-.content {
-  position: relative;
-  display: inline-block;
-  text-align: center;
+@media (min-width: 760px) {
+  table img {
+    margin-top: 3px;
+    background-size: cover;
+    border-radius: 50px;
+    border: 1px solid white;
+    width: 70%;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+table {
+  width: 100%;
+}
+table img {
+  margin-top: 3px;
+  background-size: cover;
+  border-radius: 50px;
+  border: 1px solid white;
+  width: 50%;
+  margin: 0;
+  padding: 0;
+}
+
+.espacio {
+  flex: 1 1 auto;
 }

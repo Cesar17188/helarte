@@ -13,7 +13,7 @@ export class CartComponent implements OnInit {
 
   products$: Observable<Product[]>;
   displayedColumns: string[] = ['Imagen', 'Producto', 'Adicionales', 'Fruta', 'Precio', 'actions'];
-
+  products: Product[];
 
   constructor(
     private cartService: CartService
@@ -23,8 +23,9 @@ export class CartComponent implements OnInit {
       const distintos = [...new Set(products)];
       return distintos;
     }));
+
     console.log(this.products$);
-    }
+  }
 
     // tslint:disable-next-line:typedef
     getTotalPrice() {
@@ -38,7 +39,12 @@ export class CartComponent implements OnInit {
     }
 
  ngOnInit(): void {
-
+  this.getProducts();
  }
 
+ // tslint:disable-next-line:typedef
+ getProducts(){
+   this.products = this.cartService.getProducts();
+   console.log(this.products);
+ }
 }
