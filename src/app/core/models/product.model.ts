@@ -13,7 +13,7 @@ export interface Product {
     sabores?: SABOR[];
     crema?: SYRUP;
     syrups?: SYRUP[];
-    toppingsD?: TOPPING;
+    toppingsD?: TOPPING[];
     toppingsS?: TOPPING[];
     fruta?: FRUTA[];
     leche?: boolean;

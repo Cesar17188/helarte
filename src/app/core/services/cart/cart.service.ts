@@ -28,9 +28,16 @@ export class CartService {
   }
 
   // tslint:disable-next-line:typedef
-  removeElementCart(){
-    this.products.splice(0, 1);
-    this.cart.next(this.products);
+  removeElementCart(product: Product){
+    const listCart = this.cart.getValue();
+
+    const objIndex = listCart.findIndex((obj => obj.codigo === product.codigo));
+
+    if (objIndex !== -1){
+      listCart.splice(objIndex, 1);
+    }
+
+    this.cart.next(listCart);
   }
 
   // tslint:disable-next-line:typedef

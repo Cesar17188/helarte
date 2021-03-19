@@ -19,6 +19,7 @@ export class DatosPersonalesComponent implements OnInit {
   email: string;
   usuario: User[];
   user: User;
+  products: Product[];
 
   public user$: Observable<User> = this.authService.afa.user;
 
@@ -48,6 +49,8 @@ export class DatosPersonalesComponent implements OnInit {
         this.getUsuario(this.email);
       }
     );
+
+    this.getProducts();
   }
 
   // tslint:disable-next-line:typedef
@@ -73,4 +76,41 @@ export class DatosPersonalesComponent implements OnInit {
       console.log(this.user);
     });
   }
+
+    // tslint:disable-next-line:typedef
+  getProducts(){
+    this.products = this.cartService.getProducts();
+    this.recorrerProductos(this.products);
+  }
+
+  // tslint:disable-next-line:typedef
+  recorrerProductos(products: Product[]){
+    products.forEach(product => {
+      console.log(product);
+      this.ingredientesProducto(product);
+    });
+  }
+
+  // tslint:disable-next-line:typedef
+  ingredientesProducto(product: Product){
+    if (product.sabores !== null){
+      product.sabores.forEach(sabor => console.log(sabor));
+    }
+    if (product.syrups !== null) {
+      product.syrups.forEach(syrup => console.log(syrup));
+    }
+    if (product.toppingsD !== null) {
+      product.toppingsD.forEach(toppingd => console.log(toppingd));
+    }
+    if (product.crema !== null) {
+      console.log(product.crema);
+    }
+    if (product.fruta !== null) {
+      product.fruta.forEach(fruit => console.log(fruit));
+    }
+    if (product.toppingsS !== null) {
+      product.toppingsS.forEach(toppings => console.log(toppings));
+    }
+  }
+
 }

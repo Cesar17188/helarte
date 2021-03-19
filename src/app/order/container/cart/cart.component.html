@@ -49,7 +49,7 @@
                         {{products.syrups[0].producto}}
                      </li>
                     <li *ngIf="products.toppingsD != null">
-                     {{products.toppingsD.producto}}
+                     {{products.toppingsD[0].producto}}
                   </li>
                   <li *ngIf="products.leche">
                     con leche
@@ -91,7 +91,7 @@
             <th mat-header-cell *matHeaderCellDef> Acciones </th>
             <td mat-cell *matCellDef="let products"> 
             <button mat-mini-fab color="warn" aria-label="boton con icono eliminar"
-                (click)="remove(products.producto)">
+                (click)="remove(products)">
                 <mat-icon>delete</mat-icon>
             </button>   
             </td>

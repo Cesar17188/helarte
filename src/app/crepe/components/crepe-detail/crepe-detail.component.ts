@@ -44,7 +44,7 @@ export class CrepeDetailComponent implements OnInit {
   toppingD: TOPPING[];
   codToppingD: string;
   Tsimg: any;
-  listaToppingsD: TOPPING;
+  listaToppingsD: TOPPING[];
   toppingS: TOPPING[];
   codToppingS: string;
   toppingS2: TOPPING[];
@@ -125,6 +125,7 @@ fetchSabor(codigo: string) {
       const ref = this.storage.storage.refFromURL(e.payload.doc.data().image);
       this.Saimg = ref.getDownloadURL();
       return {
+        id: e.payload.doc.id,
         codigo: e.payload.doc.data().codigo,
         producto: e.payload.doc.data().producto,
         img: this.Saimg,
@@ -158,6 +159,7 @@ fetchToppingD(codigo: string) {
       const ref = this.storage.storage.refFromURL(e.payload.doc.data().image);
       this.Timg = ref.getDownloadURL();
       return {
+        id: e.payload.doc.id,
         codigo: e.payload.doc.data().codigo,
         producto: e.payload.doc.data().producto,
         img: this.Timg,
@@ -189,6 +191,7 @@ fetchToppingS(codigo: string){
       const ref = this.storage.storage.refFromURL(e.payload.doc.data().image);
       this.Timg = ref.getDownloadURL();
       return {
+        id: e.payload.doc.id,
         codigo: e.payload.doc.data().codigo,
         producto: e.payload.doc.data().producto,
         img: this.Timg,
@@ -222,6 +225,7 @@ fetchToppingS2(codigo: string){
       const ref = this.storage.storage.refFromURL(e.payload.doc.data().image);
       this.Timg = ref.getDownloadURL();
       return {
+        id: e.payload.doc.id,
         codigo: e.payload.doc.data().codigo,
         producto: e.payload.doc.data().producto,
         img: this.Timg,
@@ -253,6 +257,7 @@ fetchToppingS3(codigo: string){
       const ref = this.storage.storage.refFromURL(e.payload.doc.data().image);
       this.Timg = ref.getDownloadURL();
       return {
+        id: e.payload.doc.id,
         codigo: e.payload.doc.data().codigo,
         producto: e.payload.doc.data().producto,
         img: this.Timg,
@@ -285,6 +290,7 @@ fetchSyrup(codigo: string) {
       const ref = this.storage.storage.refFromURL(e.payload.doc.data().image);
       this.Syimg = ref.getDownloadURL();
       return {
+        id: e.payload.doc.id,
         codigo: e.payload.doc.data().codigo,
         producto: e.payload.doc.data().producto,
         img: this.Syimg,
@@ -316,6 +322,7 @@ fetchFruta(codigo: string) {
       const ref = this.storage.storage.refFromURL(e.payload.doc.data().image);
       this.frimg = ref.getDownloadURL();
       return {
+        id: e.payload.doc.id,
         codigo: e.payload.doc.data().codigo,
         producto: e.payload.doc.data().producto,
         img: this.frimg,
@@ -345,6 +352,7 @@ addCrema(){
   this.syrupService.getCrema().subscribe(data => {
   this.crema = data.map ( e => {
     return {
+        id: e.payload.doc.id,
         codigo: e.payload.doc.data().codigo,
         producto: e.payload.doc.data().producto,
         descripcion_corta: e.payload.doc.data().descripcion_corta,
@@ -397,7 +405,7 @@ getCrema(){
   // tslint:disable-next-line:typedef
   getToppingsD() {
     if (this.toppingD != null) {
-      this.listaToppingsD = this.toppingD[0];
+      this.listaToppingsD = [this.toppingD[0]];
     }
     else {
       this.listaToppingsD = null;

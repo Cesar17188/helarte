@@ -74,6 +74,7 @@ ngOnInit(): void {
       const ref = this.storage.storage.refFromURL(e.payload.doc.data().image);
       this.img = ref.getDownloadURL();
       return {
+        id: e.payload.doc.id,
         codigo: e.payload.doc.data().codigo,
         producto: e.payload.doc.data().producto,
         img: this.img,
@@ -96,6 +97,7 @@ fetchSabor(codigo: string) {
       const ref = this.storage.storage.refFromURL(e.payload.doc.data().image);
       this.Saimg = ref.getDownloadURL();
       return {
+        id: e.payload.doc.id,
         codigo: e.payload.doc.data().codigo,
         producto: e.payload.doc.data().producto,
         img: this.Saimg,
@@ -115,6 +117,7 @@ fetchFruta(codigo: string) {
       const ref = this.storage.storage.refFromURL(e.payload.doc.data().image);
       this.frimg = ref.getDownloadURL();
       return {
+        id: e.payload.doc.id,
         codigo: e.payload.doc.data().codigo,
         producto: e.payload.doc.data().producto,
         img: this.frimg,
@@ -133,6 +136,7 @@ fetchFruta2(codigo: string) {
       const ref = this.storage.storage.refFromURL(e.payload.doc.data().image);
       this.frimg = ref.getDownloadURL();
       return {
+        id: e.payload.doc.id,
         codigo: e.payload.doc.data().codigo,
         producto: e.payload.doc.data().producto,
         img: this.frimg,

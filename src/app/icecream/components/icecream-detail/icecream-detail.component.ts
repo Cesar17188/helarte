@@ -63,7 +63,7 @@ export class IcecreamDetailComponent implements OnInit {
 // Variables de control de Toppings
 
   toppingD: TOPPING[];
-  listaToppingD: TOPPING;
+  listaToppingD: TOPPING[];
   codToppingD: string;
   Timg: any;
 
@@ -95,6 +95,7 @@ export class IcecreamDetailComponent implements OnInit {
         const ref = this.storage.storage.refFromURL(e.payload.doc.data().image);
         this.img = ref.getDownloadURL();
         return {
+          id: e.payload.doc.id,
           codigo: e.payload.doc.data().codigo,
           producto: e.payload.doc.data().producto,
           img: this.img,
@@ -117,6 +118,7 @@ export class IcecreamDetailComponent implements OnInit {
         const ref = this.storage.storage.refFromURL(e.payload.doc.data().image);
         this.Timg = ref.getDownloadURL();
         return {
+          id: e.payload.doc.id,
           codigo: e.payload.doc.data().codigo,
           producto: e.payload.doc.data().producto,
           img: this.Timg,
@@ -135,6 +137,7 @@ export class IcecreamDetailComponent implements OnInit {
         const ref = this.storage.storage.refFromURL(e.payload.doc.data().image);
         this.Syimg = ref.getDownloadURL();
         return {
+          id: e.payload.doc.id,
           codigo: e.payload.doc.data().codigo,
           producto: e.payload.doc.data().producto,
           img: this.Syimg,
@@ -153,6 +156,7 @@ export class IcecreamDetailComponent implements OnInit {
         const ref = this.storage.storage.refFromURL(e.payload.doc.data().image);
         this.Saimg = ref.getDownloadURL();
         return {
+          id: e.payload.doc.id,
           codigo: e.payload.doc.data().codigo,
           producto: e.payload.doc.data().producto,
           img: this.Saimg,
@@ -172,6 +176,7 @@ export class IcecreamDetailComponent implements OnInit {
         const ref = this.storage.storage.refFromURL(e.payload.doc.data().image);
         this.Saimg = ref.getDownloadURL();
         return {
+          id: e.payload.doc.id,
           codigo: e.payload.doc.data().codigo,
           producto: e.payload.doc.data().producto,
           img: this.Saimg,
@@ -191,6 +196,7 @@ export class IcecreamDetailComponent implements OnInit {
         const ref = this.storage.storage.refFromURL(e.payload.doc.data().image);
         this.Saimg = ref.getDownloadURL();
         return {
+          id: e.payload.doc.id,
           codigo: e.payload.doc.data().codigo,
           producto: e.payload.doc.data().producto,
           img: this.Saimg,
@@ -208,6 +214,7 @@ export class IcecreamDetailComponent implements OnInit {
     this.syrupService.getCrema().subscribe(data => {
     this.crema = data.map ( e => {
       return {
+          id: e.payload.doc.id,
           codigo: e.payload.doc.data().codigo,
           producto: e.payload.doc.data().producto,
           descripcion_corta: e.payload.doc.data().descripcion_corta,
@@ -335,7 +342,7 @@ export class IcecreamDetailComponent implements OnInit {
   // tslint:disable-next-line:typedef
   getToppings() {
     if (this.toppingD != null) {
-      this.listaToppingD = this.toppingD[0];
+      this.listaToppingD = [this.toppingD[0]];
     }
     else {
       this.listaToppingD = null;
