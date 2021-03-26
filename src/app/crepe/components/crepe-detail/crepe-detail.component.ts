@@ -66,7 +66,7 @@ export class CrepeDetailComponent implements OnInit {
   codflavor: string;
 
   // Vairables de control de fruta
-  fruta: FRUTA[];
+  frutas: FRUTA[];
   frimg: any;
   codfruta: string;
   listaFrutas: FRUTA[];
@@ -318,7 +318,7 @@ aditionSyrup(): void{
 // tslint:disable-next-line:typedef
 fetchFruta(codigo: string) {
   this.frutasService.getFruta(codigo).subscribe(data => {
-    this.fruta = data.map ( e => {
+    this.frutas = data.map ( e => {
       const ref = this.storage.storage.refFromURL(e.payload.doc.data().image);
       this.frimg = ref.getDownloadURL();
       return {
@@ -335,7 +335,7 @@ fetchFruta(codigo: string) {
 }
 
 aditionFruta(): void{
-  this.fruta = null;
+  this.frutas = null;
   const dialogRef = this.dialog.open(FrutasContainer, {
     width: '50%',
   });
@@ -414,8 +414,8 @@ getCrema(){
 
   // tslint:disable-next-line:typedef
   getFrutas() {
-    if (this.fruta != null) {
-      this.listaFrutas = this.fruta;
+    if (this.frutas != null) {
+      this.listaFrutas = this.frutas;
     }
     else {
       this.listaFrutas = null;
@@ -455,7 +455,7 @@ getCrema(){
       crema: this.isCrema,
       toppingsD: this.listaToppingsD,
       toppingsS: this.listaToppingsS,
-      fruta: this.listaFrutas,
+      frutas: this.listaFrutas,
       precioVenta: this.crepe[0].precioVenta,
       img: this.crepe[0].img,
     };

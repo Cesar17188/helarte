@@ -238,7 +238,7 @@ addcart() {
     codigo: this.shake[0].codigo,
     producto: this.shake[0].producto,
     sabores: this.listaSabores,
-    fruta: this.listaFrutas,
+    frutas: this.listaFrutas,
     leche: this.leche,
     precioVenta: this.shake[0].precioVenta,
     img: this.shake[0].img,

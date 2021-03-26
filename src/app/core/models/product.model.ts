@@ -15,7 +15,7 @@ export interface Product {
     syrups?: SYRUP[];
     toppingsD?: TOPPING[];
     toppingsS?: TOPPING[];
-    fruta?: FRUTA[];
+    frutas?: FRUTA[];
     leche?: boolean;
     image?: string;
     img?: Observable<string | null>;

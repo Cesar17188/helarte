@@ -1,8 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { fromDocRef } from '@angular/fire/firestore';
+import { FRUTA } from '@core/models/fruta.model';
 import { Product } from '@core/models/product.model';
+import { SABOR } from '@core/models/sabor.model';
+import { STOCK } from '@core/models/stock.model';
+import { SYRUP } from '@core/models/syrup.model';
+import { TOPPING } from '@core/models/topping.model';
 import { User } from '@core/models/user';
 import { AuthService } from '@core/services/auth/auth.service';
 import { CartService } from '@core/services/cart/cart.service';
+import { InventarioSaboresService } from '@core/services/inventario/inventario-sabores/inventario-sabores.service';
 import { UsersService } from '@core/services/users/users.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -26,7 +33,8 @@ export class DatosPersonalesComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private authService: AuthService,
-    private userService: UsersService
+    private userService: UsersService,
+    private inventarioSabores: InventarioSaboresService
   ) {
     this.products$ = this.cartService.cart$
     .pipe(map((products: []) => {
@@ -49,8 +57,6 @@ export class DatosPersonalesComponent implements OnInit {
         this.getUsuario(this.email);
       }
     );
-
-    this.getProducts();
   }
 
   // tslint:disable-next-line:typedef
@@ -79,38 +85,137 @@ export class DatosPersonalesComponent implements OnInit {
 
     // tslint:disable-next-line:typedef
   getProducts(){
-    this.products = this.cartService.getProducts();
-    this.recorrerProductos(this.products);
+    this.products$.subscribe(product => {
+      this.products = product.map (data => {
+        return data;
+      });
+      console.log(this.products);
+      this.recorrerProductos(this.products);
+    });
   }
 
   // tslint:disable-next-line:typedef
   recorrerProductos(products: Product[]){
     products.forEach(product => {
       console.log(product);
-      this.ingredientesProducto(product);
+      this.componentesProducto(product);
     });
   }
 
   // tslint:disable-next-line:typedef
-  ingredientesProducto(product: Product){
-    if (product.sabores !== null){
-      product.sabores.forEach(sabor => console.log(sabor));
+  componentesProducto(product: Product) {
+    switch (product.producto) {
+      case 'Cono Simple':
+        this.componentesHelado(product);
+        break;
+      case 'Cono doble':
+        this.componentesHelado(product);
+        break;
+      case 'Tulipan Simple':
+        this.componentesHelado(product);
+        break;
+      case 'Tulipan Doble':
+        this.componentesHelado(product);
+        break;
+      case 'Copa':
+        this.componentesHelado(product);
+        break;
+      case 'Medio Litro':
+        this.componentesHelado(product);
+        break;
+      case 'Litro':
+        this.componentesHelado(product);
+        break;
+      case 'Crepe de dulce':
+        this.componentesCrepeDulce(product);
+        break;
+      case 'Crepe de sal':
+        this.componentesCrepeSal(product);
+        break;
+      case 'Milkshake':
+        this.componentesMilkShake(product);
+        break;
+      case 'Shake':
+        this.componentesShake(product);
+        break;
+      default:
+        console.log('Producto no existente');
+        break;
     }
-    if (product.syrups !== null) {
-      product.syrups.forEach(syrup => console.log(syrup));
+  }
+
+  // tslint:disable-next-line:typedef
+  componentesHelado(product: Product) {
+    this.saboresProducto(product.sabores);
+    if (product.syrups !== null){
+      this.syrupsProducto(product.syrups);
     }
-    if (product.toppingsD !== null) {
-      product.toppingsD.forEach(toppingd => console.log(toppingd));
+    if (product.toppingsD !== null){
+      this.toppingsDProducto(product.toppingsD);
     }
+    if (product.crema !== null) {
+      this.cremaProducto(product);
+    }
+  }
+
+  // tslint:disable-next-line:typedef
+  componentesCrepeDulce(product: Product) {
+    this.saboresProducto(product.sabores);
+    this.frutasProducto(product.frutas);
+    this.toppingsDProducto(product.toppingsD);
+    if (product.syrups !== null){
+      this.syrupsProducto(product.syrups);
+    }
+    if (product.crema !== null) {
+      this.cremaProducto(product);
+    }
+  }
+
+  // tslint:disable-next-line:typedef
+  componentesCrepeSal(product: Product) {
+    this.toppingsSProducto(product.toppingsS);
+  }
+
+  // tslint:disable-next-line:typedef
+  componentesMilkShake(product: Product) {
+    this.saboresProducto(product.sabores);
+  }
+
+  // tslint:disable-next-line:typedef
+  componentesShake(product: Product) {
+    this.frutasProducto(product.frutas);
+  }
+
+  // tslint:disable-next-line:typedef
+  cremaProducto(product: Product){
     if (product.crema !== null) {
       console.log(product.crema);
     }
-    if (product.fruta !== null) {
-      product.fruta.forEach(fruit => console.log(fruit));
-    }
-    if (product.toppingsS !== null) {
-      product.toppingsS.forEach(toppings => console.log(toppings));
-    }
+  }
+
+  // tslint:disable-next-line:typedef
+  saboresProducto(sabores: SABOR[]){
+   sabores.forEach(sabor => console.log(sabor));
+  }
+
+  // tslint:disable-next-line:typedef
+  syrupsProducto(syrups: SYRUP[]){
+    syrups.forEach(syrup => console.log(syrup));
+  }
+
+  // tslint:disable-next-line:typedef
+  toppingsDProducto(toppingsD: TOPPING[]){
+    toppingsD.forEach(toppingD => console.log(toppingD));
+  }
+
+  // tslint:disable-next-line:typedef
+  toppingsSProducto(toppingsS: TOPPING[]){
+    toppingsS.forEach(toppingS => console.log(toppingS));
+  }
+
+  // tslint:disable-next-line:typedef
+  frutasProducto(frutas: FRUTA[]){
+    frutas.forEach(fruta => console.log(fruta));
   }
 
 }
