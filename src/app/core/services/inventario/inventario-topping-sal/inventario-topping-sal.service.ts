@@ -18,12 +18,14 @@ export class InventarioToppingSalService {
   // tslint:disable-next-line:typedef
   getStock(docid: string) {
     const doc = this.docRef.doc(docid);
-    return doc.collection('stock').snapshotChanges();
+    return doc.collection('stock', ref => ref.orderBy('fecha', 'desc').limit(1)).snapshotChanges();
   }
 
   // tslint:disable-next-line:typedef
-  getAllStocks() {
-    return this.docRef.snapshotChanges();
+  getAllStocks(docid: string) {
+    return this.docRef.doc(docid)
+    .collection('stock', ref => ref.orderBy('fecha', 'desc'))
+    .snapshotChanges();
   }
 
   // tslint:disable-next-line:typedef

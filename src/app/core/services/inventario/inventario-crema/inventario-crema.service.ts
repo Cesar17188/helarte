@@ -16,12 +16,12 @@ export class InventarioCremaService {
 
   // tslint:disable-next-line:typedef
   getStock() {
-    return this.docRef.collection('stock').snapshotChanges();
+    return this.docRef.collection('stock', ref => ref.orderBy('fecha', 'desc').limit(1)).snapshotChanges();
   }
 
   // tslint:disable-next-line:typedef
   getAllStocks() {
-    return this.docRef.collection('stock').snapshotChanges();
+    return this.docRef.collection('stock', ref => ref.orderBy('fecha', 'desc')).snapshotChanges();
   }
 
   // tslint:disable-next-line:typedef

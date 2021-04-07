@@ -9,7 +9,8 @@ import { TOPPING } from '@core/models/topping.model';
 export class InventarioToppingDulceService {
 
   idToppingD = 'FedRafyDEClXfXuolZyE';
-  docRef = this.firestore.collection<TOPPING>('inventario').doc(this.idToppingD).collection('toppings_dulce');
+  docRef = this.firestore.collection<TOPPING>('inventario')
+  .doc(this.idToppingD);
 
   constructor(
     private firestore: AngularFirestore
@@ -17,17 +18,20 @@ export class InventarioToppingDulceService {
 
   // tslint:disable-next-line:typedef
   getStock(docid: string) {
-    const doc = this.docRef.doc(docid);
-    return doc.collection('stock').snapshotChanges();
+    return this.docRef.collection('toppings_dulce')
+    .doc(docid).collection('stock', ref => ref.orderBy('fecha', 'desc').limit(1)).snapshotChanges();
   }
 
   // tslint:disable-next-line:typedef
-  getAllStocks() {
-    return this.docRef.snapshotChanges();
+  getAllStocks(docid: string) {
+    return this.docRef
+    .collection('toppings_dulce')
+    .doc(docid).collection('stock', ref => ref.orderBy('fecha', 'desc')).snapshotChanges();
   }
 
   // tslint:disable-next-line:typedef
   createStock(docid: string, data: STOCK){
-    return this.docRef.doc(docid).collection('stock').add(data);
+    return this.docRef.collection('toppings_dulce')
+    .doc(docid).collection('stock').add(data);
   }
 }

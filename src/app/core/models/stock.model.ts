@@ -3,4 +3,5 @@ export interface STOCK{
     codigo?: string;
     stock?: number;
     tipo?: string;
+    fecha?: any;
 }

@@ -19,13 +19,13 @@ export class InventarioFrutasService {
   // tslint:disable-next-line:typedef
   getStock(docid: string) {
     const doc = this.docRef.doc(docid);
-    return doc.collection('stock').snapshotChanges();
+    return doc.collection('stock', ref => ref.orderBy('fecha', 'desc').limit(1)).snapshotChanges();
   }
 
   // tslint:disable-next-line:typedef
-  getAllStocks() {
-    return this.firestore.collection<FRUTA>('inventario').doc(this.idFrutas)
-    .collection('frutas').snapshotChanges();
+  getAllStocks(docid: string) {
+    return this.docRef.doc(docid)
+    .collection('stock', ref => ref.orderBy('fecha', 'desc')).snapshotChanges();
   }
 
     // tslint:disable-next-line:typedef

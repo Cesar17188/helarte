@@ -17,13 +17,14 @@ export class InventarioSaboresService {
   // tslint:disable-next-line:typedef
   getStock(docid: string) {
     const doc = this.docRef.doc(docid);
-    return doc.collection('stock').snapshotChanges();
+    return doc.collection('stock', ref => ref.orderBy('fecha', 'desc').limit(1)).snapshotChanges();
   }
 
   // tslint:disable-next-line:typedef
-  getAllStocks() {
+  getAllStocks(docid: string) {
     return this.firestore.collection<SABOR>('inventario').doc(this.idSabores)
-    .collection('sabores').snapshotChanges();
+    .collection('sabores').doc(docid)
+    .collection('stock', ref => ref.orderBy('fecha', 'desc')).snapshotChanges();
   }
 
   // tslint:disable-next-line:typedef
