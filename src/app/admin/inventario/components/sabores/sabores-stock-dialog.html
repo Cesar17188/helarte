@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Ingresar inventario</h1>
+<div mat-dialog-content>
+    <h3>Quiere añadir {{data.stock}} gramos a {{data.producto}}</h3>
+</div>
+<div mat-dialog-actions>
+    <button mat-flat-button color="primary" (click)="onNoClick()">Cancelar</button>
+    <button mat-flat-button color="primary" (click)="agregarStock(data.id, data.stock)">Agregar</button>
+</div>
