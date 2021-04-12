@@ -31,19 +31,19 @@
     </ng-container>
       
     <!-- Columna Acciones-->
-    <!-- <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef> Acciones </th>
-        <td mat-cell *matCellDef="let helado"> 
-            <a mat-mini-fab color="primary" aria-label="boton con icono editar"
-                [routerLink]="['helado/edit/', helado.codigo]">
-            <mat-icon>edit</mat-icon>
-            </a>  
-            <button mat-mini-fab color="warn" aria-label="boton con icono eliminar"
-            (click)="deleteHelado(helado.id)">
-              <mat-icon>delete</mat-icon>
-            </button>   
-        </td>
-    </ng-container> -->
+    <ng-container matColumnDef="Acciones">
+      <th mat-header-cell *matHeaderCellDef> Agregar al inventario </th>
+      <td mat-cell *matCellDef="let frutas"> 
+        <mat-form-field>
+          <mat-label>Agregar Inventario gr.</mat-label>
+          <input #inventario placeholder="100" matInput type="number" min="0">
+          <div *ngIf="inventario.touched">
+            tocado
+          </div>
+        </mat-form-field>
+        <button mat-flat-button color="primary" (click)='save(frutas, inventario.value)' (click)='inventario.value = 0'>Agregar</button>
+      </td>
+  </ng-container>
       
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

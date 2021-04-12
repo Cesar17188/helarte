@@ -1,4 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { inventarioG } from '@core/models/dialogoInventario';
+import { STOCK } from '@core/models/stock.model';
+import { InventarioCremaService } from '@core/services/inventario/inventario-crema/inventario-crema.service';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-crema',
@@ -7,13 +12,74 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CremaComponent implements OnInit {
 
+  id: string;
+  stock: number;
+
   @Input() CremaStock: any[];
 
-  displayedColumns: string[] = ['Producto', 'Stock', 'Tipo'];
+  displayedColumns: string[] = ['Producto', 'Stock', 'Tipo', 'Acciones'];
 
-  constructor() { }
+  constructor(
+    public dialogInventario: MatDialog,
+    private invanterioCrema: InventarioCremaService
+  ) { }
 
   ngOnInit(): void {
   }
 
+  // tslint:disable-next-line:typedef
+  save(producto: any, stock: number){
+    // console.log(producto.producto, producto.id, stock);
+    const inventarioDialog = this.dialogInventario.open(AppCremaDialog, {
+      width: '250 px',
+      data: {id: producto.id, producto: producto.producto, stock}
+    });
+
+    inventarioDialog.afterClosed().subscribe(result => {
+      const stockfinale = {stock: result, fecha: firebase.default.firestore.FieldValue.serverTimestamp()};
+      try{
+        this.invanterioCrema.createStock(stockfinale);
+        alert('se han ingresado el stock correctamente');
+      }catch (err){
+        alert('Inventario no actualizado');
+      }
+    });
+  }
+
+}
+
+@Component({
+  selector: 'app-crema-stock-dialog',
+  templateUrl: './crema-stock-dialog.html'
+})
+// tslint:disable-next-line:component-class-suffix
+export class AppCremaDialog {
+
+  inventarioStock: number;
+  inventarioFinal = 0;
+  constructor(
+    private invanterioCrema: InventarioCremaService,
+    public inventarioDialog: MatDialogRef<AppCremaDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: inventarioG) {}
+
+    // tslint:disable-next-line:typedef
+    agregarStock(stock: number){
+      let stockActual: STOCK;
+      let stockNumber = 0;
+      this.invanterioCrema.getStock().subscribe(idata => {
+        stockActual = idata.map( e => {
+          return {
+            stock: e.payload.doc.data().stock
+          };
+        });
+        stockNumber = stockActual[0].stock + Number(stock);
+        this.data.stock = stockNumber;
+        console.log(this.data.stock);
+        this.inventarioDialog.close(this.data.stock);
+      });
+    }
+
+    onNoClick(): void{
+      this.inventarioDialog.close();
+    }
 }

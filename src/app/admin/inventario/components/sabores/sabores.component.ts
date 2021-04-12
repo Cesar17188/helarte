@@ -43,6 +43,7 @@ export class SaboresComponent implements OnInit {
       const stockfinale = {stock: result, fecha: firebase.default.firestore.FieldValue.serverTimestamp()};
       try{
         this.inventarioSabores.createStock(producto.id, stockfinale);
+        alert('se han ingresado el stock correctamente');
       }catch (err){
         alert('Inventario no actualizado');
       }

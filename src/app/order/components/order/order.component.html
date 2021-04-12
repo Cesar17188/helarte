@@ -2,13 +2,16 @@
     <mat-step>
         <ng-template matStepLabel>Sus compras</ng-template>
             <app-cart></app-cart>
-            <div>
-                <button mat-raised-button color="primary" matStepperNext>Next</button>
+            <div class="boton">
+                <button mat-raised-button color="primary" matStepperNext>Confirmar Orden</button>
             </div>
     </mat-step>
     <mat-step>
         <ng-template matStepLabel>Confirmar pedido</ng-template>
         <app-datos-personales></app-datos-personales>
+        <div class="boton">
+            <button mat-raised-button color="primary" matStepperNext>Comprobante de pago</button>
+        </div>
     </mat-step>
     <mat-step>
         <ng-template>Pago</ng-template>

@@ -267,10 +267,9 @@ export class DatosPersonalesComponent implements OnInit {
       });
       try{
         this.inventarioCrema.createStock(this.stockFinaleSabor);
-        alert('Se ha ingresado el stock exitosamente');
       }
       catch (err){
-        alert('No se ha ingresado el stock');
+        console.log(err);
       }
     });
     // window.location.reload();
@@ -532,13 +531,11 @@ export class DatosPersonalesComponent implements OnInit {
       });
       try{
         this.inventarioSyrups.createStock(stock.codigo, this.stockFinaleSyrup);
-        alert('Se ha ingresado el Syrup exitosamente');
       }
       catch (err){
-        alert('No se ha ingresado el Syrup');
+        console.log(err);
       }
     });
-    // window.location.reload();
   }
 
   // tslint:disable-next-line:typedef
@@ -655,10 +652,9 @@ export class DatosPersonalesComponent implements OnInit {
       });
       try{
         this.inventarioToppingsD.createStock(stock.codigo, this.stockFinaleToppingD);
-        alert('Se ha ingresado el topping dulce exitosamente');
       }
       catch (err){
-        alert('No se ha ingresado el topping dulce');
+        console.log(err);
       }
     });
     // window.location.reload();
@@ -743,10 +739,10 @@ export class DatosPersonalesComponent implements OnInit {
         });
       try{
         this.inventarioToppingsS.createStock(stock.codigo, this.stockFinaleToppingS);
-        alert('Se ha ingresado el topping sal exitosamente');
+        alert('Se ha ingresado el topping correctamente');
       }
       catch (err){
-        alert('No se ha ingresado el topping sal');
+        alert('No se ha ingresado el topping correctamente');
       }
     });
     // window.location.reload();
