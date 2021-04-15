@@ -8,7 +8,7 @@ import { HeladosService } from './services/helados/helados.service';
 import { SaboresService } from './services/sabores/sabores.service';
 import { CartService } from './services/cart/cart.service';
 import { AuthService } from './services/auth/auth.service';
-
+import { ClientsService } from './services/clients/clients.service';
 @NgModule({
   declarations: [],
   imports: [
@@ -22,6 +22,7 @@ import { AuthService } from './services/auth/auth.service';
     SaboresService,
     CartService,
     AuthService,
+    ClientsService
   ]
 })
 export class CoreModule { }
