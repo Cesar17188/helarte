@@ -45,35 +45,35 @@
 <button mat-raised-button (click)="fetchCliente(identificationField.value)">Verificar cliente</button>
 
 <mat-card>
-    <div class="row">
-        <div class="col-xs">
-            <img src="./../../../../assets/images/logo.jpg" alt="">
+    <div *ngIf="(products$ | async ) as products" id="comprobante">
+        <div class="row">
+            <div class="col-xs">
+                <img src="./../../../../assets/images/logo.jpg" alt="">
+            </div>
+            <div class="col-xs">
+                <h1>Comprobante de pago</h1>
+            </div>
         </div>
-        <div class="col-xs">
-            <h1>Comprobante de pago</h1>
+        <div class="row">
+            <div class="col-xs">
+                <mat-label>Cliente: {{nameField.value}}</mat-label>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-xs">
-            <mat-label>Cliente: {{nameField.value}}</mat-label>
+        <div class="row">
+            <div class="col-xs">
+                <mat-label>Direccion: {{directionField.value}}</mat-label>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-xs">
-            <mat-label>Direccion: {{directionField.value}}</mat-label>
+        <div class="row">
+            <div class="col-xs">
+                <mat-label>C.I.: {{identificationField.value}}</mat-label>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-xs">
-            <mat-label>C.I.: {{identificationField.value}}</mat-label>
+        <div class="row">
+            <div class="col-xs">
+                <mat-label>Correo Electrónico: {{emailField.value}}</mat-label>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-xs">
-            <mat-label>Correo Electrónico: {{emailField.value}}</mat-label>
-        </div>
-    </div>
-    <div *ngIf="(products$ | async ) as products">
         <p *ngIf="products.length == 0">No hay productos</p>
         <table mat-table [dataSource]="products | deleteRepeats" class="mat-elevation-z8">
     
@@ -131,4 +131,8 @@
             </mat-toolbar>
         </div>
     </div>
+    <mat-card-actions>
+        <button mat-raised-button (click)="saveComprobante()">Enviar comprobante</button>
+        <button mat-raised-button (click)="generarPDF()">Imprimir comprobante</button>
+    </mat-card-actions>
 </mat-card>

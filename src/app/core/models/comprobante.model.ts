@@ -1,8 +1,9 @@
+import { CLIENT } from './client.model';
 import { Product } from './product.model';
 
 export interface COMPROBANTE {
-    identification?: string;
+    cliente?: CLIENT;
     fecha?: any;
-    products?: Product[];
+    products?: any[];
     total?: number;
 }
