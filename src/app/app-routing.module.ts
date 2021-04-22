@@ -31,7 +31,7 @@ const routes: Routes = [
                 loadChildren: () => import('./icecream/icecream.module').then(m => m.IcecreamModule)
             },
             {
-                path: 'crepes',
+                path: 'crepes y wafles',
                 loadChildren: () => import('./crepe/crepe.module').then(m => m.CrepeModule)
             },
             {

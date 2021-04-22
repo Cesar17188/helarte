@@ -61,9 +61,12 @@ export class CrepeDetailComponent implements OnInit {
 
   // Variables de control de sabor de helado
   sabor: SABOR[];
+  saborExtra: SABOR[];
   listaSabores: SABOR[];
   Saimg: any;
+  Saimgex: any;
   codflavor: string;
+  codflavorex: string;
 
   // Vairables de control de fruta
   frutas: FRUTA[];
@@ -149,6 +152,40 @@ selectFlavor(): void{
     this.codflavor = result;
     this.fetchSabor(this.codflavor);
     console.log(this.sabor);
+  });
+}
+
+// tslint:disable-next-line:typedef
+fetchSaborAdicional(codigo: string) {
+  this.saborService.getSabor(codigo).subscribe(data => {
+      this.saborExtra = data.map ( e => {
+      const ref = this.storage.storage.refFromURL(e.payload.doc.data().image);
+      this.Saimgex = ref.getDownloadURL();
+      return {
+        id: e.payload.doc.id,
+        codigo: e.payload.doc.data().codigo,
+        producto: e.payload.doc.data().producto,
+        img: this.Saimgex,
+        descripcion_corta: e.payload.doc.data().descripcion_corta,
+        descripcion_larga: e.payload.doc.data().descripcion_larga,
+        precioCompra: e.payload.doc.data().precioCompra
+      };
+    });
+  });
+  console.log(this.saborExtra);
+}
+
+selectFlavorAdicional(): void{
+  this.saborExtra = null;
+  const dialogRef = this.dialog.open(SaboresContainer, {
+    width: '50%',
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+    this.codflavorex = result;
+    this.fetchSaborAdicional(this.codflavorex);
+    console.log(this.saborExtra);
   });
 }
 
@@ -394,9 +431,13 @@ getCrema(){
 
   // tslint:disable-next-line:typedef
   getSabores() {
-    if (this.sabor != null){
+    if (this.sabor != null && this.saborExtra == null){
       this.listaSabores = this.sabor;
-    } else {
+    } else if (this.sabor != null && this.saborExtra != null) {
+      this.listaSabores = [this.sabor[0], this.saborExtra[0]];
+      this.crepe[0].precioVenta = this.crepe[0].precioVenta + 1;
+    }
+    else {
       this.listaSabores = null;
     }
     return this.listaSabores;
@@ -473,7 +514,7 @@ backClicked() {
 // Función de bandera con booleano para determinar el tipo de crepe
 // tslint:disable-next-line:typedef
 function dulceSal(codigo: string){
-if (codigo === 'cp0001'){
+if (codigo === 'cp0001' || codigo === 'cp0003'){
   return true;
 } else {
   return false;

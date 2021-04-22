@@ -48,6 +48,13 @@
                                     Syrup
                                 </button>
                             </div>
+                            <div id="sabor2">
+                                <h3 *ngIf="saborExtra">{{saborExtra[0].producto}}</h3>
+                                <img *ngIf="saborExtra" [src]="saborExtra[0].img | async" alt="">
+                                <button mat-raised-button color="warn" mat-raised-button (click)="selectFlavorAdicional()">
+                                    Sabor Adicional + $1
+                                </button>
+                            </div>
                         </div>
                         <mat-slide-toggle class="crema" color="primary" [(ngModel)]="flagCrema">Agrega crema a tu crepe</mat-slide-toggle>
                     </div>
