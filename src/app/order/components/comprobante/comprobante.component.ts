@@ -81,8 +81,12 @@ export class ComprobanteComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   save() {
-    this.clientService.createClient(this.cliente.value);
-    console.log(this.cliente.value);
+    try{
+      this.clientService.createClient(this.cliente.value);
+      alert('cliente ingresado');
+    }catch (err){
+      alert('cliente no ingresado');
+    }
   }
 
   // tslint:disable-next-line:typedef
@@ -102,7 +106,12 @@ export class ComprobanteComponent implements OnInit {
       total: totalActual,
     };
     console.log(this.newComprobante);
-    this.comprobanteService.createComprobante(this.newComprobante);
+    try{
+      this.comprobanteService.createComprobante(this.newComprobante);
+      alert('usuario ingresado');
+    }catch (err){
+      alert('usuario no ingresado');
+    }
   }
 
   // tslint:disable-next-line:typedef
@@ -130,6 +139,7 @@ export class ComprobanteComponent implements OnInit {
       if (this.newClient !== undefined ){
         this.cliente.patchValue(this.newClient);
       } else {
+        const identificationActual = this.cliente.get('identification');
         alert ('Cliente no encontrado');
         this.cliente.reset();
       }

@@ -30,6 +30,7 @@
       "@home/*": ["src/app/home/*"],
       "@ingredients/*": ["src/app/ingredients/*"],
       "@icecream/*": ["src/app/icecream/*"],
+      "@arepas/*": ["src/app/arepas/*"],
       "@layout/*": ["src/app/layout/*"],
       "@order/*": ["src/app/order/*"],
       "@shake/*": ["src/app/shake/*"],

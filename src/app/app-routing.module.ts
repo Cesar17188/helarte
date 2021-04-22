@@ -35,6 +35,10 @@ const routes: Routes = [
                 loadChildren: () => import('./crepe/crepe.module').then(m => m.CrepeModule)
             },
             {
+                path: 'arepas',
+                loadChildren: () => import('./arepas/arepas.module').then(m => m.ArepasModule)
+            },
+            {
                 path: 'shakes',
                 loadChildren: () => import('./shake/shake.module').then(m => m.ShakeModule)
             },

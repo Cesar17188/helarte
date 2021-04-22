@@ -143,34 +143,34 @@ export class DatosPersonalesComponent implements OnInit {
   componentesProducto(product: Product) {
     switch (product.producto) {
       case 'Cono Simple':
-        this.componentesHelado(product, 15);
+        this.componentesHelado(product, 95);
         break;
       case 'Cono doble':
-        this.componentesHelado(product, 15);
+        this.componentesHelado(product, 95);
         break;
       case 'Tulipan Simple':
-        this.componentesHelado(product, 15);
+        this.componentesHelado(product, 95);
         break;
       case 'Tulipan Doble':
-        this.componentesHelado(product, 15);
+        this.componentesHelado(product, 95);
         break;
       case 'Copa':
-        this.componentesHelado(product, 15);
+        this.componentesHelado(product, 95);
         break;
       case 'Medio Litro':
-        this.componentesHelado(product, 500);
+        this.componentesHelado(product, 400);
         break;
       case 'Litro':
-        this.componentesHelado(product, 1000);
+        this.componentesHelado(product, 800);
         break;
       case 'Crepe de dulce':
-        this.componentesCrepeDulce(product, 15);
+        this.componentesCrepeDulce(product, 95);
         break;
       case 'Crepe de sal':
-        this.componentesCrepeSal(product, 30);
+        this.componentesCrepeSal(product, 60);
         break;
       case 'Milkshake':
-        this.componentesMilkShake(product, 15);
+        this.componentesMilkShake(product, 95);
         break;
       case 'Shake':
         this.componentesShake(product);
@@ -185,26 +185,26 @@ export class DatosPersonalesComponent implements OnInit {
   componentesHelado(product: Product, saborStock: number) {
     this.saboresProducto(product.sabores, saborStock);
     if (product.syrups !== null){
-      this.syrupsProducto(product.syrups, 5);
+      this.syrupsProducto(product.syrups, 1);
     }
     if (product.toppingsD !== null){
-      this.toppingsDProducto(product.toppingsD, 5);
+      this.toppingsDProducto(product.toppingsD, 1);
     }
     if (product.crema !== null) {
-      this.cremaProducto(product, 5);
+      this.cremaProducto(product, 1);
     }
   }
 
   // tslint:disable-next-line:typedef
   componentesCrepeDulce(product: Product, saborStock: number) {
     this.saboresProducto(product.sabores, saborStock);
-    this.frutasProducto(product.frutas, 10);
-    this.toppingsDProducto(product.toppingsD, 5);
+    this.frutasProducto(product.frutas, 1);
+    this.toppingsDProducto(product.toppingsD, 1);
     if (product.syrups !== null){
-      this.syrupsProducto(product.syrups, 5);
+      this.syrupsProducto(product.syrups, 1);
     }
     if (product.crema !== null) {
-      this.cremaProducto(product, 5);
+      this.cremaProducto(product, 1);
     }
   }
 
@@ -220,7 +220,7 @@ export class DatosPersonalesComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   componentesShake(product: Product) {
-    this.frutasProducto(product.frutas, 20);
+    this.frutasProducto(product.frutas, 1);
   }
 
   // tslint:disable-next-line:typedef

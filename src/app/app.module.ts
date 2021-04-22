@@ -33,6 +33,7 @@ import { IngredientsModule } from '@ingredients/ingredients.module';
 import { MaterialModule } from '@material/material.module';
 import { CafeModule } from '@cafe/cafe.module';
 import { ShakeModule } from '@shake/shake.module';
+import { ArepasModule } from '@arepas/arepas.module';
 import { AuthModule } from '@auth/auth.module';
 import { PageNotFoundRoutingModule } from './page-not-found/page-not-found-routing.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -55,6 +56,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     MaterialModule,
     CafeModule,
     ShakeModule,
+    ArepasModule,
     AuthModule,
     PageNotFoundRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
