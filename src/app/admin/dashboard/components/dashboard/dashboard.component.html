@@ -1,24 +1,241 @@
 <div class="grid-container">
-  <h1 class="mat-h1">Dashboard</h1>
-  <mat-grid-list cols="2" rowHeight="350px">
-    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-          <mat-card-title>
-            {{card.title}}
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item>Expand</button>
-              <button mat-menu-item>Remove</button>
-            </mat-menu>
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
-          <div>Card Content Here</div>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
+  <h1 class="mat-h1">Control de ventas</h1>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Total diario</span>
+      <span class="example-spacer"></span>
+      <span>{{totalDiario | currency}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span>Total de {{mesActual}}</span>
+      <span class="example-spacer"></span>
+      <span>{{totalMes | currency}}</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <h1 class="mat-h1">Productos vendidos en el día</h1>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Cono Simple</span>
+      <span class="example-spacer"></span>
+      <span>{{totalDiarioConoSimple}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Cono Doble </span>
+      <span class="example-spacer"></span>
+      <span>{{totalDiarioConoDoble}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Tulipan Simple </span>
+      <span class="example-spacer"></span>
+      <span>{{totalDiarioTulipanSimple}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Tulipan Doble </span>
+      <span class="example-spacer"></span>
+      <span>{{totalDiarioTulipanDoble}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Copa </span>
+      <span class="example-spacer"></span>
+      <span>{{totalDiarioCopa}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Medio Litro de helado</span>
+      <span class="example-spacer"></span>
+      <span>{{totalDiarioMedioLitro}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Litro de helado </span>
+      <span class="example-spacer"></span>
+      <span>{{totalDiarioLitro}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Crepe de sal </span>
+      <span class="example-spacer"></span>
+      <span>{{totalDiarioCrepeSal}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Crepe de dulce </span>
+      <span class="example-spacer"></span>
+      <span>{{totalDiarioCrepeDulce}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Wafle </span>
+      <span class="example-spacer"></span>
+      <span>{{totalDiarioWafle}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> MilkShake </span>
+      <span class="example-spacer"></span>
+      <span>{{totalDiarioMilkShake}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Shake </span>
+      <span class="example-spacer"></span>
+      <span>{{totalDiarioShake}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Arepa de pollo </span>
+      <span class="example-spacer"></span>
+      <span>{{totalDiarioArepaPollo}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Arepa de carne mechada </span>
+      <span class="example-spacer"></span>
+      <span>{{totalDiarioArepaCarneMechada}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Café Americano </span>
+      <span class="example-spacer"></span>
+      <span>{{totalDiarioAmericano}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Té </span>
+      <span class="example-spacer"></span>
+      <span>{{totalDiarioTe}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Carajillo </span>
+      <span class="example-spacer"></span>
+      <span>{{totalDiarioCarajillo}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Expresso </span>
+      <span class="example-spacer"></span>
+      <span>{{totalDiarioExpreso}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Chocolate</span>
+      <span class="example-spacer"></span>
+      <span>{{totalDiarioChocolate}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Frapucchino </span>
+      <span class="example-spacer"></span>
+      <span>{{totalDiarioFrapucchino}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Capucchino </span>
+      <span class="example-spacer"></span>
+      <span>{{totalDiarioCapuchino}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Moccacino </span>
+      <span class="example-spacer"></span>
+      <span>{{totalDiarioMocaccino}}</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <h1 class="mat-h1">Productos vendidos en el mes</h1>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Cono Simple</span>
+      <span class="example-spacer"></span>
+      <span>{{totalMesConoSimple}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Cono Doble </span>
+      <span class="example-spacer"></span>
+      <span>{{totalMesConoDoble}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Tulipan Simple </span>
+      <span class="example-spacer"></span>
+      <span>{{totalMesTulipanSimple}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Tulipan Doble </span>
+      <span class="example-spacer"></span>
+      <span>{{totalMesTulipanDoble}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Copa </span>
+      <span class="example-spacer"></span>
+      <span>{{totalMesCopa}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Medio Litro de helado</span>
+      <span class="example-spacer"></span>
+      <span>{{totalMesMedioLitro}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Litro de helado </span>
+      <span class="example-spacer"></span>
+      <span>{{totalMesLitro}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Crepe de sal </span>
+      <span class="example-spacer"></span>
+      <span>{{totalMesCrepeSal}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Crepe de dulce </span>
+      <span class="example-spacer"></span>
+      <span>{{totalMesCrepeDulce}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Wafle </span>
+      <span class="example-spacer"></span>
+      <span>{{totalMesWafle}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> MilkShake </span>
+      <span class="example-spacer"></span>
+      <span>{{totalMesMilkShake}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Shake </span>
+      <span class="example-spacer"></span>
+      <span>{{totalMesShake}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Arepa de pollo </span>
+      <span class="example-spacer"></span>
+      <span>{{totalMesArepaPollo}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Arepa de carne mechada </span>
+      <span class="example-spacer"></span>
+      <span>{{totalMesArepaCarneMechada}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Café Americano </span>
+      <span class="example-spacer"></span>
+      <span>{{totalMesAmericano}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Té </span>
+      <span class="example-spacer"></span>
+      <span>{{totalMesTe}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Carajillo </span>
+      <span class="example-spacer"></span>
+      <span>{{totalMesCarajillo}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Expresso </span>
+      <span class="example-spacer"></span>
+      <span>{{totalMesExpreso}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Chocolate</span>
+      <span class="example-spacer"></span>
+      <span>{{totalMesChocolate}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Frapucchino </span>
+      <span class="example-spacer"></span>
+      <span>{{totalMesFrapucchino}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Capucchino </span>
+      <span class="example-spacer"></span>
+      <span>{{totalMesCapuchino}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span> Moccacino </span>
+      <span class="example-spacer"></span>
+      <span>{{totalMesMocaccino}}</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
 </div>

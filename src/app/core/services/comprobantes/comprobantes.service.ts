@@ -27,4 +27,20 @@ export class ComprobantesService {
     return this.firestore.collection('comprobantes',
     ref => ref.orderBy('fecha', 'desc')).snapshotChanges();
   }
+
+  // tslint:disable-next-line:typedef
+  public getAllComprobantesMes(prevM: Date, actM: Date) {
+    return this.firestore.collection('comprobantes',
+    ref => ref.where('fecha', '>=', prevM)
+    .where('fecha', '<=', actM)
+    .orderBy('fecha', 'desc')).snapshotChanges();
+  }
+
+  // tslint:disable-next-line:typedef
+  public getAllComprobantesDía(prevD: Date, actD: Date) {
+    return this.firestore.collection('comprobantes',
+    ref => ref.where('fecha', '>=', prevD)
+    .where('fecha', '<=', actD)
+    .orderBy('fecha', 'desc')).snapshotChanges();
+  }
 }

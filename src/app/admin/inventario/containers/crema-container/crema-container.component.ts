@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/storage';
 import { STOCK } from '@core/models/stock.model';
 import { SYRUP } from '@core/models/syrup.model';
-import { InventarioCremaService } from '@core/services/inventario/inventario-crema/inventario-crema.service';
 import { SalsasService } from '@core/services/salsas/salsas.service';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-crema-container',
@@ -11,50 +12,63 @@ import { SalsasService } from '@core/services/salsas/salsas.service';
 })
 export class CremaContainerComponent implements OnInit {
 
-  crema: SYRUP[];
+  listaCrema: SYRUP[];
   stock: STOCK;
+  img: any;
+  crema: SYRUP;
   stockCrema: any[];
   stocks: any[];
   stocksTotal: any[];
+
   constructor(
+    private router: Router,
+    private route: ActivatedRoute,
     private cremaService: SalsasService,
-    private inventarioCremaService: InventarioCremaService
+    private storage: AngularFireStorage
   ) { }
 
   ngOnInit(): void {
     this.fetchCrema();
   }
 
+  // tslint:disable-next-line:typedef
+  createCrema(data) {
+    const crema = data;
+    this.cremaService.createSyrup(crema).then(resp => {
+      console.log(resp);
+      this.router.navigate(['./admin/inventario']);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  }
 
+  // tslint:disable-next-line:typedef
+  updateCrema(data) {
+    this.cremaService.updateSyrup(this.listaCrema[0].id, data);
+    this.router.navigate(['./admin/inventario']);
+  }
   // tslint:disable-next-line:typedef
   fetchCrema() {
     this.cremaService.getCrema()
     .subscribe(data => {
-      this.crema = data.map( e => {
+      this.listaCrema = data.map( e => {
+        const ref = this.storage.storage.refFromURL(e.payload.doc.data().image);
+        this.img = ref.getDownloadURL();
         return {
           id: e.payload.doc.id,
+          codigo: e.payload.doc.data().codigo,
           producto: e.payload.doc.data().producto,
+          descripcion_corta: e.payload.doc.data().descripcion_corta,
+          descripcion_larga: e.payload.doc.data().descripcion_larga,
           unidadMedida: e.payload.doc.data().unidadMedida
         };
       });
-      this.fetchInventarioCrema(this.crema[0].id);
+      this.crema = this.listaCrema[0];
+      this.crema.image = this.img;
+      console.log(this.listaCrema[0]);
     });
   }
 
-    // tslint:disable-next-line:typedef
-    fetchInventarioCrema(id: string){
-      this.inventarioCremaService.getStock()
-      .subscribe(data => {
-        this.stock = data.map( e => {
-          return {
-            codigo: e.payload.doc.data().codigo,
-            stock: e.payload.doc.data().stock
-          };
-        });
-        this.stockCrema = [Object.assign(this.crema[0], this.stock)];
-        this.stocks = this.stockCrema;
-        console.log(this.stocks);
-      });
-    }
 
 }

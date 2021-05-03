@@ -1,5 +1,6 @@
 .grid-container {
   margin: 20px;
+  background-color: #26c6da;
 }
 
 .dashboard-card {
@@ -18,4 +19,8 @@
 
 .dashboard-card-content {
   text-align: center;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
 }

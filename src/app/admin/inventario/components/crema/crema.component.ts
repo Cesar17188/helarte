@@ -2,7 +2,9 @@ import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { inventarioG } from '@core/models/dialogoInventario';
 import { STOCK } from '@core/models/stock.model';
+import { SYRUP } from '@core/models/syrup.model';
 import { InventarioCremaService } from '@core/services/inventario/inventario-crema/inventario-crema.service';
+import { SalsasService } from '@core/services/salsas/salsas.service';
 import * as firebase from 'firebase';
 
 @Component({
@@ -15,16 +17,23 @@ export class CremaComponent implements OnInit {
   id: string;
   stock: number;
 
-  @Input() CremaStock: any[];
+  listaCrema: SYRUP[];
+  listaStock: STOCK;
+  CremaStock: any[];
+  stockCrema: any[];
+
+  // @Input() CremaStock: any[];
 
   displayedColumns: string[] = ['Producto', 'Stock', 'Tipo', 'Acciones'];
 
   constructor(
     public dialogInventario: MatDialog,
-    private invanterioCrema: InventarioCremaService
+    private invanterioCrema: InventarioCremaService,
+    private cremaService: SalsasService
   ) { }
 
   ngOnInit(): void {
+    this.fetchCrema();
   }
 
   // tslint:disable-next-line:typedef
@@ -45,6 +54,37 @@ export class CremaComponent implements OnInit {
       }
     });
   }
+
+  // tslint:disable-next-line:typedef
+  fetchCrema() {
+    this.cremaService.getCrema()
+    .subscribe(data => {
+      this.listaCrema = data.map( e => {
+        return {
+          id: e.payload.doc.id,
+          producto: e.payload.doc.data().producto,
+          unidadMedida: e.payload.doc.data().unidadMedida
+        };
+      });
+      this.fetchInventarioCrema(this.listaCrema[0].id);
+    });
+  }
+
+    // tslint:disable-next-line:typedef
+    fetchInventarioCrema(id: string){
+      this.invanterioCrema.getStock()
+      .subscribe(data => {
+        this.listaStock = data.map( e => {
+          return {
+            codigo: e.payload.doc.data().codigo,
+            stock: e.payload.doc.data().stock
+          };
+        });
+        this.stockCrema = [Object.assign(this.listaCrema[0], this.listaStock)];
+        this.CremaStock = this.stockCrema;
+        console.log(this.CremaStock);
+      });
+    }
 
 }
 

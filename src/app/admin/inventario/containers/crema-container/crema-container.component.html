@@ -1,2 +1,5 @@
-<app-crema
-[CremaStock]=stocks></app-crema>
+<app-crema-form
+(create)="createCrema($event)"
+(update)="updateCrema($event)"
+[crema]="crema">
+</app-crema-form>

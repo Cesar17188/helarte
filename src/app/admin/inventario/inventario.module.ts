@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { InventarioRoutingModule } from './inventario-routing.module';
 import { ToppingsSalComponent } from './components/toppings-sal/toppings-sal.component';
@@ -17,6 +18,7 @@ import { FrutasContainerComponent } from './containers/frutas-container/frutas-c
 import { FrutasComponent } from './components/frutas/frutas.component';
 import { CremaContainerComponent } from './containers/crema-container/crema-container.component';
 import { CremaComponent } from './components/crema/crema.component';
+import { CremaFormComponent } from './components/crema-form/crema-form.component';
 @NgModule({
   declarations: [
     ToppingsSalComponent,
@@ -31,12 +33,14 @@ import { CremaComponent } from './components/crema/crema.component';
     FrutasContainerComponent,
     FrutasComponent,
     CremaContainerComponent,
-    CremaComponent
+    CremaComponent,
+    CremaFormComponent
   ],
   imports: [
     CommonModule,
     InventarioRoutingModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ]
 })
 export class InventarioModule { }

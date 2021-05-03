@@ -8,6 +8,8 @@ import { SyrupsContainerComponent } from './containers/syrups-container/syrups-c
 import { SaboresContainerComponent } from './containers/sabores-container/sabores-container.component';
 import { FrutasContainerComponent } from './containers/frutas-container/frutas-container.component';
 import { CremaContainerComponent } from './containers/crema-container/crema-container.component';
+import { CremaFormComponent } from './components/crema-form/crema-form.component';
+import { CremaComponent } from './components/crema/crema.component';
 
 const routes: Routes = [
   {
@@ -36,6 +38,14 @@ const routes: Routes = [
   },
   {
     path: 'crema',
+    component: CremaComponent
+  },
+  {
+    path: 'crema/create',
+    component: CremaContainerComponent
+  },
+  {
+    path: 'crema/edit',
     component: CremaContainerComponent
   }
 ];

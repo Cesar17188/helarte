@@ -6,14 +6,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '@material/material.module';
 
 import { NavComponent } from './component/nav/nav.component';
-import { DashboardComponent } from './component/dashboard/dashboard.component';
 
 
 
 @NgModule({
   declarations: [
     NavComponent,
-    DashboardComponent,
   ],
   imports: [
     CommonModule,
