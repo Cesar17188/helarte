@@ -166,7 +166,6 @@ export class IcecreamDetailComponent implements OnInit {
         };
       });
     });
-    console.log(this.sabor);
   }
 
   // tslint:disable-next-line:typedef
@@ -186,7 +185,6 @@ export class IcecreamDetailComponent implements OnInit {
         };
       });
     });
-    console.log(this.sabor2);
   }
 
   // tslint:disable-next-line:typedef
@@ -206,7 +204,6 @@ export class IcecreamDetailComponent implements OnInit {
         };
       });
     });
-    console.log(this.sabor3);
   }
 
   // tslint:disable-next-line:typedef
@@ -223,7 +220,6 @@ export class IcecreamDetailComponent implements OnInit {
           precioVenta: e.payload.doc.data().precioVenta
         };
       });
-    console.log(this.crema);
     });
 }
 
@@ -239,7 +235,6 @@ export class IcecreamDetailComponent implements OnInit {
       console.log('The dialog was closed');
       this.codflavor = result;
       this.fetchSabor(this.codflavor);
-      console.log(this.sabor);
     });
   }
 
@@ -253,7 +248,6 @@ export class IcecreamDetailComponent implements OnInit {
       console.log('The dialog was closed');
       this.codflavor2 = result;
       this.fetchSabor2(this.codflavor2);
-      console.log( this.sabor2 );
     });
   }
 
@@ -267,7 +261,6 @@ export class IcecreamDetailComponent implements OnInit {
       console.log('The dialog was closed');
       this.codflavor3 = result;
       this.fetchSabor3(this.codflavor3);
-      console.log( this.sabor3 );
     });
   }
 

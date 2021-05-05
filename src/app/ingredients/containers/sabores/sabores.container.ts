@@ -23,10 +23,11 @@ export class SaboresContainer implements OnInit {
   ngOnInit(): void {
     this.fetchSabores();
   }
-
+  // Recuperación de los sabores desde el servicio de sabores 'saboresService'
   // tslint:disable-next-line:typedef
   fetchSabores() {
     this.saboresService.getAllSabores().subscribe(data => {
+      // Envía los sabores al componente gráfico components/sabores/sabores.component
       this.sabores = data.map( e => {
         // tslint:disable-next-line: no-string-literal
         const ref = this.storage.storage.refFromURL(e.payload.doc.data()['image']);
@@ -40,7 +41,6 @@ export class SaboresContainer implements OnInit {
           descripcion_larga: e.payload.doc.data().descripcion_larga
         };
       });
-      console.log(this.sabores);
     });
   }
 

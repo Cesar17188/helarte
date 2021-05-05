@@ -25,9 +25,11 @@ export class IceproductsContainer implements OnInit {
     this.fetchHelados();
   }
 
+  // Recuperación de los helados desde el servicio de helados 'heladosService'
   // tslint:disable-next-line: typedef
   fetchHelados() {
     this.heladosService.getHelados().subscribe(data => {
+      // Envía los helados al componente gráfico components/helados/helados.component
       this.helados = data.map( e => {
         // tslint:disable-next-line: no-string-literal
         const ref = this.storage.storage.refFromURL(e.payload.doc.data()['image']);
@@ -41,7 +43,7 @@ export class IceproductsContainer implements OnInit {
           descripcion_larga: e.payload.doc.data().descripcion_larga
         };
       });
-      console.log(this.helados);
+      // console.log(this.helados);
     });
   }
 

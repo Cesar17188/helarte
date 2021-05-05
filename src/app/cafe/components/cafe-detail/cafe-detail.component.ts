@@ -62,7 +62,6 @@ export class CafeDetailComponent implements OnInit {
       img: this.cafe[0].img,
     };
     this.cartService.addCart(this.newCafe);
-    // this.cartService.changeCart(this.newCafe);
   }
 
   // tslint:disable-next-line:typedef

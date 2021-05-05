@@ -41,7 +41,6 @@ export class CrepesproductsContainer implements OnInit {
           descripcion_larga: e.payload.doc.data().descripcion_larga
         };
       });
-      console.log(this.crepes);
     });
   }
 

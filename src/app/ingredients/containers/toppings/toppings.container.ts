@@ -24,9 +24,11 @@ export class ToppingsContainer implements OnInit {
     this.fetchToppings();
   }
 
+  // Recuperación de los toppings de dulce desde el servicio de toppings de dulce 'toppingsDulceService'
   // tslint:disable-next-line:typedef
   fetchToppings() {
     this.toppingService.getAllToppingD().subscribe(data => {
+      // Envía los toppings de dulce al componente gráfico components/toppingsD/toppingsD.component
       this.toppingsD = data.map( e => {
         // tslint:disable-next-line: no-string-literal
         const ref = this.storage.storage.refFromURL(e.payload.doc.data()['image']);
@@ -40,7 +42,6 @@ export class ToppingsContainer implements OnInit {
           descripcion_larga: e.payload.doc.data().descripcion_larga
         };
       });
-      console.log(this.toppingsD);
     });
   }
 

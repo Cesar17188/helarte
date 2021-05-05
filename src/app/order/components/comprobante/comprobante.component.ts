@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 import { buffer, map } from 'rxjs/operators';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-comprobante',
@@ -35,7 +36,9 @@ export class ComprobanteComponent implements OnInit {
     private formBuilder: FormBuilder,
     private cartService: CartService,
     private clientService: ClientsService,
-    private comprobanteService: ComprobantesService
+    private comprobanteService: ComprobantesService,
+    // tslint:disable-next-line:variable-name
+    private _snackBar: MatSnackBar
   ) {
     this.buildForm();
     this.products$ = this.cartService.cart$.pipe(
@@ -83,9 +86,9 @@ export class ComprobanteComponent implements OnInit {
   save() {
     try{
       this.clientService.createClient(this.cliente.value);
-      alert('cliente ingresado');
+      this.openSnackBar('Cliente Ingresado', 'OK');
     }catch (err){
-      alert('cliente no ingresado');
+      this.openSnackBar('Cliente no Ingresado', 'OK');
     }
   }
 
@@ -108,9 +111,9 @@ export class ComprobanteComponent implements OnInit {
     console.log(this.newComprobante);
     try{
       this.comprobanteService.createComprobante(this.newComprobante);
-      alert('usuario ingresado');
+      this.openSnackBar('Comprobante Ingresado', 'OK');
     }catch (err){
-      alert('usuario no ingresado');
+      this.openSnackBar('Comprobante no Ingresado', 'OK');
     }
   }
 
@@ -139,9 +142,10 @@ export class ComprobanteComponent implements OnInit {
       if (this.newClient !== undefined ){
         this.cliente.patchValue(this.newClient);
       } else {
-        const identificationActual = this.cliente.get('identification');
-        alert ('Cliente no encontrado');
+        const identificationActual = this.identificationField.value;
         this.cliente.reset();
+        this.openSnackBar('Cliente no Encontrado', 'OK');
+        this.cliente.controls.identification.setValue(identificationActual);
       }
     });
   }
@@ -158,6 +162,11 @@ export class ComprobanteComponent implements OnInit {
       doc.addImage(img, 'PNG', 5, 30, 195, 105);
       doc.save('comprobante_pdf');
     });
+  }
+
+  // tslint:disable-next-line:typedef
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
   }
 
 }

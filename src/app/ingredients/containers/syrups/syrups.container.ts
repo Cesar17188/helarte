@@ -24,9 +24,11 @@ export class SyrupsContainer implements OnInit {
     this.fetchSyrups();
   }
 
+  // Recuperación de los syrups desde el servicio de syrups 'syrupsService'
   // tslint:disable-next-line:typedef
   fetchSyrups() {
     this.syrupServices.getAllSyrups().subscribe(data => {
+      // Envía los syrups al componente gráfico components/syrups/syrups.component
       this.syrups = data.map( e => {
         // tslint:disable-next-line: no-string-literal
         const ref = this.storage.storage.refFromURL(e.payload.doc.data()['image']);
@@ -40,7 +42,6 @@ export class SyrupsContainer implements OnInit {
           descripcion_larga: e.payload.doc.data().descripcion_larga
         };
       });
-      console.log(this.syrups);
     });
   }
 

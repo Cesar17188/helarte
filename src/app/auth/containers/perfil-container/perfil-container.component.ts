@@ -53,7 +53,6 @@ export class PerfilContainerComponent implements OnInit {
         };
       });
       this.user = this.usuario[0];
-      console.log(this.user);
     });
   }
 }

@@ -24,6 +24,7 @@ export class ToppingsSalContainer implements OnInit {
     this.fetchToppings();
   }
 
+  // Recuperación de los toppings de sal desde el servicio de toppings de sal 'toppingsSalService'
   // tslint:disable-next-line:typedef
   fetchToppings() {
     this.toppingService.getAllToppingsS().subscribe(data => {
@@ -40,7 +41,6 @@ export class ToppingsSalContainer implements OnInit {
           descripcion_larga: e.payload.doc.data().descripcion_larga
         };
       });
-      console.log(this.toppingsS);
     });
   }
 

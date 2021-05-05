@@ -119,7 +119,6 @@ export class ArepasDetailComponent implements OnInit {
       toppingsS: toppingS,
       img: this.arepa[0].img,
     };
-    console.log(this.newArepa);
     this.cartService.addCart(this.newArepa);
   }
 

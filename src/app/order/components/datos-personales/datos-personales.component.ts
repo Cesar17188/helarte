@@ -19,6 +19,7 @@ import { InventarioToppingDulceService } from '@core/services/inventario/inventa
 import { InventarioCremaService } from '@core/services/inventario/inventario-crema/inventario-crema.service';
 import { InventarioFrutasService } from '@core/services/inventario/inventario-frutas/inventario-frutas.service';
 import { InventarioToppingSalService } from '@core/services/inventario/inventario-topping-sal/inventario-topping-sal.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-datos-personales',
@@ -71,7 +72,9 @@ export class DatosPersonalesComponent implements OnInit {
     private inventarioToppingsD: InventarioToppingDulceService,
     private inventarioToppingsS: InventarioToppingSalService,
     private inventarioCrema: InventarioCremaService,
-    private inventarioFruta: InventarioFrutasService
+    private inventarioFruta: InventarioFrutasService,
+    // tslint:disable-next-line:variable-name
+    private _snackBar: MatSnackBar
   ) {
     this.products$ = this.cartService.cart$
     .pipe(map((products: []) => {
@@ -116,7 +119,6 @@ export class DatosPersonalesComponent implements OnInit {
         };
       });
       this.user = this.usuario[0];
-      console.log(this.user);
     });
   }
 
@@ -126,7 +128,6 @@ export class DatosPersonalesComponent implements OnInit {
       this.products = product.map (data => {
         return data;
       });
-      console.log(this.products);
       this.recorrerProductos(this.products);
     });
   }
@@ -134,7 +135,6 @@ export class DatosPersonalesComponent implements OnInit {
   // tslint:disable-next-line:typedef
   recorrerProductos(products: Product[]){
     products.forEach(product => {
-      console.log(product);
       this.componentesProducto(product);
     });
   }
@@ -272,7 +272,6 @@ export class DatosPersonalesComponent implements OnInit {
         console.log(err);
       }
     });
-    // window.location.reload();
   }
 
   // tslint:disable-next-line:typedef
@@ -425,13 +424,19 @@ export class DatosPersonalesComponent implements OnInit {
       });
       try{
         this.inventarioSabores.createStock(stock.codigo, this.stockFinaleSabor);
-        alert('Se ha ingresado el stock exitosamente');
+        this.retiroStock();
       }
       catch (err){
         alert('No se ha ingresado el stock');
       }
     });
-    // window.location.reload();
+  }
+
+  // tslint:disable-next-line:typedef
+  retiroStock() {
+    this._snackBar.openFromComponent(RetiroStockComponent, {
+      duration: 5 * 1000,
+    });
   }
 
   // tslint:disable-next-line:typedef
@@ -447,7 +452,6 @@ export class DatosPersonalesComponent implements OnInit {
   // tslint:disable-next-line:typedef
   syrupsProducto(syrups: SYRUP[], stockIngrediente: number){
     syrups.forEach(syrup => {
-      console.log(syrup.producto);
       this.listaStockSyrups.push({producto: syrup.producto, codigo: syrup.id, stock: stockIngrediente});
     });
     console.log(this.listaStockSyrups);
@@ -527,7 +531,6 @@ export class DatosPersonalesComponent implements OnInit {
         });
         this.varStockSyrup = (this.stockActualSyrup[0].stock - stock.stock);
         this.stockFinaleSyrup = {stock: this.varStockSyrup, fecha: firebase.default.firestore.FieldValue.serverTimestamp()};
-        console.log(this.stockFinaleSyrup);
       });
       try{
         this.inventarioSyrups.createStock(stock.codigo, this.stockFinaleSyrup);
@@ -541,10 +544,8 @@ export class DatosPersonalesComponent implements OnInit {
   // tslint:disable-next-line:typedef
   toppingsDProducto(toppingsD: TOPPING[], stockIngrediente: number){
     toppingsD.forEach(toppingD => {
-      console.log(toppingD.producto);
       this.listaStockToppingsD.push({producto: toppingD.producto, codigo: toppingD.id, stock: stockIngrediente});
     });
-    console.log(this.listaStockToppingsD);
     const listaStocksToppingsD: STOCK = this.stockToppingsD();
     this.cambioStockToppingsD(listaStocksToppingsD);
   }
@@ -637,7 +638,6 @@ export class DatosPersonalesComponent implements OnInit {
     const stockToppingsD = Object.values(stocks);
     stockToppingsD.forEach(stock => {
       this.varStockToppingD = 0;
-      console.log(stock);
       this.inventarioToppingsD.getStock(stock.codigo)
       .pipe(delay(500))
       .subscribe(data => {
@@ -648,7 +648,6 @@ export class DatosPersonalesComponent implements OnInit {
         });
         this.varStockToppingD = (this.stockActualToppingD[0].stock - stock.stock);
         this.stockFinaleToppingD = {stock: this.varStockToppingD, fecha: firebase.default.firestore.FieldValue.serverTimestamp()};
-        console.log(this.stockFinaleToppingD);
       });
       try{
         this.inventarioToppingsD.createStock(stock.codigo, this.stockFinaleToppingD);
@@ -664,10 +663,8 @@ export class DatosPersonalesComponent implements OnInit {
   // tslint:disable-next-line:typedef
   toppingsSProducto(toppingsS: TOPPING[], stockIngrediente: number){
     toppingsS.forEach(toppingS => {
-      console.log(toppingS);
       this.listaStockToppingsS.push({producto: toppingS.producto, codigo: toppingS.id, stock: stockIngrediente});
     });
-    console.log(this.listaStockToppingsS);
     const listaStocksToppingSS: STOCK = this.stockToppingsS();
     this.cambioStockToppingsS(listaStocksToppingSS);
   }
@@ -724,7 +721,6 @@ export class DatosPersonalesComponent implements OnInit {
     const stockToppingsS = Object.values(stocks);
     stockToppingsS.forEach(stock => {
       this.varStockToppingS = 0;
-      console.log(stock);
       this.inventarioToppingsS.getStock(stock.codigo)
         .pipe(delay(500))
         .subscribe(data => {
@@ -739,22 +735,19 @@ export class DatosPersonalesComponent implements OnInit {
         });
       try{
         this.inventarioToppingsS.createStock(stock.codigo, this.stockFinaleToppingS);
-        alert('Se ha ingresado el topping correctamente');
+        this.retiroStock();
       }
       catch (err){
         alert('No se ha ingresado el topping correctamente');
       }
     });
-    // window.location.reload();
   }
 
   // tslint:disable-next-line:typedef
   frutasProducto(frutas: FRUTA[], stockIngrediente: number){
     frutas.forEach(fruta => {
-      console.log(fruta.producto);
       this.listaStockFrutas.push({producto: fruta.producto, codigo: fruta.id, stock: stockIngrediente});
     });
-    console.log(this.listaStockFrutas);
     const listaStocksFrutas: STOCK = this.stockFrutas();
     this.cambioStockFrutas(listaStocksFrutas);
   }
@@ -820,7 +813,6 @@ export class DatosPersonalesComponent implements OnInit {
     const stockFrutas = Object.values(stocks);
     stockFrutas.forEach(stock => {
       this.varStockFruta = 0;
-      console.log(stock);
       this.inventarioFruta.getStock(stock.codigo)
       .pipe(delay(500))
       .subscribe(data => {
@@ -835,13 +827,26 @@ export class DatosPersonalesComponent implements OnInit {
       });
       try{
         this.inventarioFruta.createStock(stock.codigo, this.stockFinaleFruta);
-        alert('Se ha ingresado La fruta exitosamente');
+        this.retiroStock();
       }
       catch (err){
         alert('No se ha ingresado la fruta debido a ');
       }
     });
-    // window.location.reload();
   }
 
 }
+
+
+
+@Component({
+  // tslint:disable-next-line:component-selector
+  selector: 'snack-bar-component-retiro-stock',
+  templateUrl: './snack-bar-component-retiro-stock.html',
+  styles: [`
+    .retiro-stock {
+      color: #80DEEA;
+    }
+  `],
+})
+export class RetiroStockComponent {}

@@ -28,8 +28,6 @@ export class CartComponent implements OnInit {
         return distintos;
       })
     );
-
-    console.log(this.products$);
   }
 
   // tslint:disable-next-line:typedef

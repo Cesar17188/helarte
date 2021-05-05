@@ -25,9 +25,11 @@ export class FrutasContainer implements OnInit {
     this.fetchFrutas();
   }
 
+  // Recuperación de las frutas desde el servicio de frutas 'frutasService'
   // tslint:disable-next-line:typedef
   fetchFrutas() {
     this.frutaService.getAllFrutas().subscribe(data => {
+      // Envía las frutas al componente gráfico components/frutas/frutas.component
       this.frutas = data.map( e => {
         // tslint:disable-next-line: no-string-literal
         const ref = this.storage.storage.refFromURL(e.payload.doc.data()['image']);
@@ -41,7 +43,6 @@ export class FrutasContainer implements OnInit {
           descripcion_larga: e.payload.doc.data().descripcion_larga
         };
       });
-      console.log(this.frutas);
     });
   }
 

@@ -29,9 +29,12 @@ export class ProductsContainer implements OnInit {
     console.log('producto');
     console.log(codigo);
   }
+
+  // Recuperación de los productos desde el servicio de productos 'productsService'
   // tslint:disable-next-line: typedef
   fetchProducts() {
     this.productsService.getProductos().subscribe(data => {
+      // Envía los productos al componente gráfico components/product/product.component
       this.products = data.map( e => {
         // tslint:disable-next-line: no-string-literal
         const ref = this.storage.storage.refFromURL(e.payload.doc.data()['image']);
@@ -48,7 +51,6 @@ export class ProductsContainer implements OnInit {
           descripcion_larga: e.payload.doc.data()['descripcion_larga']
         };
       });
-      console.log(this.products);
     });
   }
 

@@ -107,7 +107,6 @@ fetchSabor(codigo: string) {
       };
     });
   });
-  console.log(this.sabor);
 }
 
 // tslint:disable-next-line:typedef
@@ -160,7 +159,6 @@ selectFlavor(): void{
     console.log('The dialog was closed');
     this.codflavor = result;
     this.fetchSabor(this.codflavor);
-    console.log(this.sabor);
   });
 }
 

@@ -138,7 +138,6 @@ fetchSabor(codigo: string) {
       };
     });
   });
-  console.log(this.sabor);
 }
 
 selectFlavor(): void{
@@ -151,7 +150,6 @@ selectFlavor(): void{
     console.log('The dialog was closed');
     this.codflavor = result;
     this.fetchSabor(this.codflavor);
-    console.log(this.sabor);
   });
 }
 
@@ -172,7 +170,6 @@ fetchSaborAdicional(codigo: string) {
       };
     });
   });
-  console.log(this.saborExtra);
 }
 
 selectFlavorAdicional(): void{
@@ -185,7 +182,6 @@ selectFlavorAdicional(): void{
     console.log('The dialog was closed');
     this.codflavorex = result;
     this.fetchSaborAdicional(this.codflavorex);
-    console.log(this.saborExtra);
   });
 }
 
@@ -398,7 +394,6 @@ addCrema(){
         precioVenta: e.payload.doc.data().precioVenta
       };
     });
-  console.log(this.crema);
   });
 }
 
