@@ -1,32 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { CrepesService } from '@core/services/crepes/crepes.service';
+import { ArepasService } from '@core/services/arepas/arepas.service';
 
 @Component({
-  selector: 'app-crepes',
-  templateUrl: './crepes.component.html',
-  styleUrls: ['./crepes.component.scss']
+  selector: 'app-arepas',
+  templateUrl: './arepas.component.html',
+  styleUrls: ['./arepas.component.scss']
 })
-export class CrepesComponent implements OnInit {
+export class ArepasComponent implements OnInit {
 
-  crepes = [];
+  arepas = [];
   img: any;
   data: any;
-  displayedColumns: string[] = ['codigo', 'crepe', 'precio', 'actions'];
+  displayedColumns: string[] = ['codigo', 'arepa', 'precio', 'actions'];
 
   constructor(
-    private crepeService: CrepesService,
+    private arepasService: ArepasService,
     private storage: AngularFireStorage
   ) { }
 
   ngOnInit(): void {
-    this.fetchCrepes();
+    this.fetchArepas();
   }
 
   // tslint:disable-next-line:typedef
-  fetchCrepes() {
-    this.crepeService.getAllCrepes().subscribe(data => {
-      this.crepes = data.map( e => {
+  fetchArepas() {
+    this.arepasService.getAllArepas().subscribe(data => {
+      this.arepas = data.map( e => {
         const ref = this.storage.storage.refFromURL(e.payload.doc.data().image);
         this.img = ref.getDownloadURL();
         return {
@@ -43,9 +43,7 @@ export class CrepesComponent implements OnInit {
   }
 
   // tslint:disable-next-line:typedef
-  deleteCrepe(documentId: string) {
-    this.crepeService.deleteCrepe(documentId);
+  deleteArepa(documentId: string) {
+    this.arepasService.deleteArepa(documentId);
   }
-
-
 }

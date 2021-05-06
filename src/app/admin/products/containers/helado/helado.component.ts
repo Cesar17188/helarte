@@ -25,7 +25,6 @@ export class HeladoComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       if (params.codigo) {
-        console.log(params.codigo);
         this.getHelado(params.codigo);
       }
     });
@@ -35,7 +34,6 @@ export class HeladoComponent implements OnInit {
   createHelado(data) {
     const helado = data;
     this.heladoService.createHelado(helado).then(resp => {
-      console.log(resp);
       this.router.navigate(['./admin/productos']);
     })
     .catch(error => {
@@ -45,7 +43,6 @@ export class HeladoComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   updateHelado(data) {
-    console.log(data);
     this.heladoService.updateHelado(this.newHelado[0].id, data);
     this.router.navigate(['./admin/productos']);
   }
@@ -68,7 +65,6 @@ export class HeladoComponent implements OnInit {
       });
       this.helado = this.newHelado[0];
       this.helado.image = this.img;
-      console.log(this.newHelado[0]);
     });
   }
 

@@ -140,7 +140,6 @@ export class DashboardComponent {
           total: e.payload.doc.data()['total']
         };
       });
-      console.log(this.comprobantesDiario);
       this.getTotalDia(this.comprobantesDiario);
     });
   }
@@ -151,7 +150,6 @@ export class DashboardComponent {
       this.totalDiario += comprobante.total;
       this.getProductsDia(Array.from(comprobante.products));
     });
-    console.log(this.totalDiario);
   }
 
   // tslint:disable-next-line:typedef
@@ -245,7 +243,6 @@ export class DashboardComponent {
           total: e.payload.doc.data()['total']
         };
       });
-      console.log(this.comprobantesMes);
       this.getTotalMes(this.comprobantesMes);
     });
   }
@@ -257,7 +254,6 @@ export class DashboardComponent {
       const productos = this.listProductsToArray(comprobante.products);
       this.getProductosMes(productos);
     });
-    console.log(this.totalMes);
   }
 
   // tslint:disable-next-line:typedef

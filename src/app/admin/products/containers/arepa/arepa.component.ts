@@ -1,23 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireStorage } from '@angular/fire/storage';
+import { Product } from '@core/models/product.model';
+import { ArepasService } from '@core/services/arepas/arepas.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-
-import { SHAKE } from '@core/models/shake.model';
-import { ShakesService } from '@core/services/shakes/shakes.service';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
-  selector: 'app-shake',
-  templateUrl: './shake.component.html',
-  styleUrls: ['./shake.component.scss']
+  selector: 'app-arepa',
+  templateUrl: './arepa.component.html',
+  styleUrls: ['./arepa.component.scss']
 })
-export class ShakeComponent implements OnInit {
+export class ArepaComponent implements OnInit {
 
-  newShake = [];
-  shake: SHAKE;
+  newArepa = [];
+  arepa: Product;
   img: any;
 
   constructor(
-    private shakeService: ShakesService,
+    private arepaService: ArepasService,
     private router: Router,
     private route: ActivatedRoute,
     private storage: AngularFireStorage
@@ -26,15 +25,15 @@ export class ShakeComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       if (params.codigo) {
-        this.getShake(params.codigo);
+        this.fetchArepa(params.codigo);
       }
     });
   }
 
   // tslint:disable-next-line:typedef
-  createShake(data) {
-    const shake = data;
-    this.shakeService.createShake(shake).then(resp => {
+  createArepa(data) {
+    const arepa = data;
+    this.arepaService.createArepa(arepa).then(resp => {
       this.router.navigate(['./admin/productos']);
     })
     .catch(error => {
@@ -43,15 +42,16 @@ export class ShakeComponent implements OnInit {
   }
 
   // tslint:disable-next-line:typedef
-  updateShake(data) {
-    this.shakeService.updateShake(this.newShake[0].id, data);
+  updateArepa(data) {
+    this.arepaService.updateArepa(this.newArepa[0].id, data);
     this.router.navigate(['./admin/productos']);
   }
 
+
   // tslint:disable-next-line:typedef
-  getShake(codigo: string) {
-    this.shakeService.getShake(codigo).subscribe(data => {
-      this.newShake = data.map ( e => {
+  fetchArepa(codigo: string) {
+    this.arepaService.getArepa(codigo).subscribe(data => {
+      this.newArepa = data.map ( e => {
         const ref = this.storage.storage.refFromURL(e.payload.doc.data().image);
         this.img = ref.getDownloadURL();
         return {
@@ -64,8 +64,8 @@ export class ShakeComponent implements OnInit {
           precioVenta: e.payload.doc.data().precioVenta
         };
       });
-      this.shake = this.newShake[0];
-      this.shake.image = this.img;
+      this.arepa = this.newArepa[0];
+      this.arepa.image = this.img;
     });
   }
 

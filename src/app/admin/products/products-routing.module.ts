@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ListaComponent } from './components/lista/lista.component';
+import { ArepaComponent } from './containers/arepa/arepa.component';
 import { CafeComponent } from './containers/cafe/cafe.component';
 import { CrepeComponent } from './containers/crepe/crepe.component';
 import { HeladoComponent } from './containers/helado/helado.component';
@@ -42,6 +43,14 @@ const routes: Routes = [
   {
     path: 'cafe/edit/:codigo',
     component: CafeComponent
+  },
+  {
+    path: 'arepa/create',
+    component: ArepaComponent
+  },
+  {
+    path: 'arepa/edit/:codigo',
+    component: ArepaComponent
   }
 ];
 

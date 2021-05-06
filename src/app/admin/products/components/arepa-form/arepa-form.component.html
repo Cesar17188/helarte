@@ -1,0 +1,112 @@
+<form [formGroup]="form" (ngSubmit)="save()">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Arepas</mat-card-title>
+            <mat-card-subtitle *ngIf="isNew">Crea una nueva arepa</mat-card-subtitle>
+            <mat-card-subtitle *ngIf="!isNew">Edita tu arepa</mat-card-subtitle>
+        </mat-card-header>
+            <mat-card-content>
+                <div class="row">
+                    <div class="col-xs">
+                        <mat-form-field>
+                            <mat-label>Codigo</mat-label>
+                            <input placeholder="ar0010" formControlName="codigo" matInput type="text">
+                            <div class="messages" *ngIf="codigoField.touched && codigoField.invalid">
+                                <mat-error *ngIf="codigoField.hasError('required')">
+                                    Este campo es requerido
+                                </mat-error>
+                            </div>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs">
+                        <mat-form-field>
+                            <mat-label>Producto</mat-label>
+                            <input placeholder="Producto" formControlName="producto" matInput type="text">
+                            <div class="messages" *ngIf="productField.touched && productField.invalid">
+                                <mat-error *ngIf="productField.hasError('required')">
+                                    Este campo es requerido
+                                </mat-error>
+                                <mat-error *ngIf="productField.hasError('minlength')">
+                                    Mínimo debe tener 5 caracteres
+                                </mat-error>
+                            </div>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs">
+                        <mat-form-field>
+                            <mat-label>Descripcion corta</mat-label>
+                            <textarea placeholder="ej. Este producto es..." formControlName="descripcion_corta" matInput type="text"></textarea>
+                            <div class="messages" *ngIf="descripcion_cortaField.touched && descripcion_cortaField.invalid">
+                                <mat-error *ngIf="descripcion_cortaField.hasError('required')">
+                                    Este campo es requerido
+                                </mat-error>
+                                <mat-error *ngIf="descripcion_cortaField.hasError('minlength')">
+                                    Mínimo debe tener 5 caracteres
+                                </mat-error>
+                            </div>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs">
+                        <mat-form-field>
+                            <mat-label>Descripcion larga</mat-label>
+                            <textarea placeholder="ej. Este producto es..." formControlName="descripcion_larga" matInput type="text"></textarea>
+                            <div class="messages" *ngIf="descripcion_largaField.touched && descripcion_largaField.invalid">
+                                <mat-error *ngIf="descripcion_largaField.hasError('required')">
+                                    Este campo es requerido
+                                </mat-error>
+                                <mat-error *ngIf="descripcion_largaField.hasError('minlength')">
+                                    Mínimo debe tener 5 caracteres
+                                </mat-error>
+                            </div>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs">
+                        <mat-form-field>
+                            <mat-label>Precio</mat-label>
+                            <input placeholder="1.50" formControlName="precioVenta" matInput type="number">
+                            <div class="messages" *ngIf="precioVentaField.touched && precioVentaField.invalid">
+                                <mat-error *ngIf="precioVentaField.hasError('required')">
+                                    Este campo es requerido
+                                </mat-error>
+                                <mat-error *ngIf="precioVentaField.hasError('min')">
+                                    Mínimo debe costar 1.00
+                                </mat-error>
+                            </div>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs">
+                        <button (click)="fileInput.click()" mat-mini-fab color="primary">
+                            <mat-icon>perm_media</mat-icon>
+                        </button>
+                        <input #fileInput (change)="uploadFile($event)" placeholder="Image" type="file" style="display: none;">
+                        <div class="messages" *ngIf="imageField.touched && imageField.invalid">
+                            <mat-error *ngIf="imageField.hasError('required')">
+                                Este campo es requerido
+                            </mat-error>
+                        </div> 
+                        <img *ngIf="isNew || (image$ | async) as image" [src]="image" alt=""/>
+                        <img *ngIf="imageField.value" [src]="imageField.value | async" alt="">
+                    </div>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button type="submit">
+                    <span *ngIf="isNew">Crear Cafe</span>
+                    <span *ngIf="!isNew">Guardar Cafe</span>
+                </button>
+                <button mat-raised-button color="warn" (click)="backClicked()">
+                    Cancelar
+                </button>
+            </mat-card-actions>
+    </mat-card>
+</form>

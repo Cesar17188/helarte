@@ -26,7 +26,6 @@ export class CrepeComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       if (params.codigo) {
-        console.log(params.codigo);
         this.getCrepe(params.codigo);
       }
     });
@@ -36,7 +35,6 @@ export class CrepeComponent implements OnInit {
   createCrepe(data) {
     const crepe = data;
     this.crepeService.createCrepe(crepe).then(resp => {
-      console.log(resp);
       this.router.navigate(['./admin/productos']);
     })
     .catch(error => {
@@ -46,7 +44,6 @@ export class CrepeComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   updateCrepe(data) {
-    console.log(data);
     this.crepeService.updateCrepe(this.newCrepe[0].id, data);
     this.router.navigate(['./admin/productos']);
   }
@@ -69,7 +66,6 @@ export class CrepeComponent implements OnInit {
       });
       this.crepe = this.newCrepe[0];
       this.crepe.image = this.img;
-      console.log(this.newCrepe[0]);
     });
   }
 

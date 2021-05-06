@@ -19,7 +19,9 @@ import { CafeComponent } from './containers/cafe/cafe.component';
 import { CrepeComponent } from './containers/crepe/crepe.component';
 import { ShakeComponent } from './containers/shake/shake.component';
 import { HeladoComponent } from './containers/helado/helado.component';
-
+import { ArepaComponent } from './containers/arepa/arepa.component';
+import { ArepaFormComponent } from './components/arepa-form/arepa-form.component';
+import { ArepasComponent } from './components/arepas/arepas.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,10 @@ import { HeladoComponent } from './containers/helado/helado.component';
     CafeComponent,
     CrepeComponent,
     ShakeComponent,
-    HeladoComponent
+    HeladoComponent,
+    ArepaComponent,
+    ArepaFormComponent,
+    ArepasComponent,
   ],
   imports: [
     CommonModule,

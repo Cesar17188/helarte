@@ -28,7 +28,6 @@ export class CafeComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       if (params.codigo) {
-        console.log(params.codigo);
         this.getCafe(params.codigo);
       }
     });
@@ -38,7 +37,6 @@ export class CafeComponent implements OnInit {
   createCafe(data) {
     const crepe = data;
     this.cafeService.createCafe(crepe).then(resp => {
-      console.log(resp);
       this.router.navigate(['./admin/productos']);
     })
     .catch(error => {
@@ -48,7 +46,6 @@ export class CafeComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   updateCafe(data) {
-    console.log(data);
     this.cafeService.updateCafe(this.newCafe[0].id, data);
     this.router.navigate(['./admin/productos']);
   }
@@ -71,7 +68,6 @@ export class CafeComponent implements OnInit {
       });
       this.cafe = this.newCafe[0];
       this.cafe.image = this.img;
-      console.log(this.newCafe[0]);
     });
   }
 
