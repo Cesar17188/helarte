@@ -120,7 +120,6 @@ export class FrutasContainerComponent implements OnInit {
         });
         this.stockBanana = [Object.assign(this.frutas[4], this.banana)];
         this.stocks = this.stockDurazno.concat(this.stockFresa, this.stockUva, this.stockMango, this.stockBanana);
-        console.log(this.stocks);
       });
     }
 

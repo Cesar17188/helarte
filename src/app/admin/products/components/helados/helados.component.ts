@@ -45,7 +45,6 @@ export class HeladosComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   deleteHelado(documentId: string) {
-    console.log(documentId);
     this.heladosService.deleteHelado(documentId);
   }
 

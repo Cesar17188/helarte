@@ -241,7 +241,6 @@ export class SaboresContainerComponent implements OnInit {
                                                  this.stockCocoCocoRalladoPasas, this.stockMora, this.stockMango,
                                                  this.stockGuanabana, this.stockMaracuya, this.stockZanahoraNaranja,
                                                  this.stockLimonHiervaBuena, this.stockChicleSandia);
-        console.log(this.stocks);
       });
     }
 

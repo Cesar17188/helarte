@@ -82,7 +82,6 @@ export class CremaComponent implements OnInit {
         });
         this.stockCrema = [Object.assign(this.listaCrema[0], this.listaStock)];
         this.CremaStock = this.stockCrema;
-        console.log(this.CremaStock);
       });
     }
 

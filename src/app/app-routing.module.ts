@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { AdminGuard } from '@guardianes/admin/admin.guard';
+import { CajeroGuard } from '@guardianes/cajero/cajero.guard';
 import { LayoutComponent } from './layout/layout.component';
 import { QuicklinkStrategy } from 'ngx-quicklink';
 
@@ -52,7 +53,8 @@ const routes: Routes = [
             },
             {
                 path: 'order',
-                loadChildren: () => import('./order/order.module').then(m => m.OrderModule)
+                loadChildren: () => import('./order/order.module').then(m => m.OrderModule),
+                canActivate: [CajeroGuard, AdminGuard]
             },
             {
                 path: 'perfil',

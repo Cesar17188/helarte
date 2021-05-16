@@ -171,7 +171,6 @@ export class ToppingsDulceContainerComponent implements OnInit {
         this.stockAlmendras = [Object.assign(this.toppingd[7], this.almendras)];
         this.stocks = this.stockOreo.concat(this.stockChispasChocolate, this.stockGrajeas, this.stockCoco,
                                             this.stockGranola, this.stockArandanos, this.stockNueces, this.stockAlmendras);
-        console.log(this.stocks);
       });
     }
 

@@ -74,7 +74,6 @@ export class AppSyrupsDialog {
         });
         stockNumber = stockActual[0].stock + Number(stock);
         this.data.stock = stockNumber;
-        console.log(this.data.stock);
         this.inventarioDialog.close(this.data.stock);
       });
     }

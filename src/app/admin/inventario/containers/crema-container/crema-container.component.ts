@@ -66,7 +66,6 @@ export class CremaContainerComponent implements OnInit {
       });
       this.crema = this.listaCrema[0];
       this.crema.image = this.img;
-      console.log(this.listaCrema[0]);
     });
   }
 

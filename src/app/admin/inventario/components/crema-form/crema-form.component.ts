@@ -111,7 +111,6 @@ export class CremaFormComponent implements OnInit {
         this.image$.subscribe(url => {
           console.log(url);
           this.imageField.setValue(url);
-          console.log(this.imageField);
         });
       })
     )

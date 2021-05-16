@@ -120,7 +120,6 @@ export class SyrupsContainerComponent implements OnInit {
         this.stockMani = [Object.assign(this.syrups[4], this.mani)];
         this.stocks = this.stockChocolate.concat(this.stockFresa, this.stockManjar, this.stockChicles,
                                                 this.stockMani);
-        console.log(this.stocks);
       });
     }
 

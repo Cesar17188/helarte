@@ -101,7 +101,6 @@ export class ToppingsSalContainerComponent implements OnInit {
         });
         this.stockJamon = [Object.assign(this.toppings[3], this.jamon)];
         this.stocks = this.stockQueso.concat(this.stockSalami, this.stockPollo, this.stockJamon);
-        console.log(this.stocks);
       });
     }
 
@@ -115,7 +114,6 @@ export class ToppingsSalContainerComponent implements OnInit {
             stock: e.payload.doc.data().stock
           };
         });
-        console.log(this.stock);
       });
     }
 
@@ -131,7 +129,6 @@ export class ToppingsSalContainerComponent implements OnInit {
                 unidadMedida: e.payload.doc.data().unidadMedida
               };
       });
-      console.log(this.toppings);
     });
   }
 
