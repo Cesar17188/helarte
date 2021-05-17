@@ -48,7 +48,7 @@
                 <div *ngIf="flagSyrup" class="sabor">
                     <div id="sabor1">
                         <h3 *ngIf="syrup">{{syrup[0].producto}}</h3>
-                        <img *ngIf="syrup" [src]="syrup[0].img | async" alt="">
+                        <!-- <img *ngIf="syrup" [src]="syrup[0].img | async" alt=""> -->
                         <button *ngIf="flagSyrup; else elseBlock2" mat-raised-button color="warn" mat-raised-button (click)="aditionSyrup()">
                             Syrup
                         </button>
@@ -58,7 +58,7 @@
                     </div>
                     <div id="sabor2">
                         <h3 *ngIf="toppingD">{{toppingD[0].producto}}</h3>
-                        <img *ngIf="toppingD" [src]="toppingD[0].img | async" alt="">
+                        <!-- <img *ngIf="toppingD" [src]="toppingD[0].img | async" alt=""> -->
                         <button *ngIf="flagSyrup; else elseBlock2 "mat-raised-button color="warn" mat-raised-button (click)="aditionToping()">
                             Topping Dulce
                         </button>

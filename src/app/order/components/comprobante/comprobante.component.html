@@ -36,13 +36,13 @@
             </div>
         </mat-card-content>
         <mat-card-actions>
+            <button mat-raised-button (click)="fetchCliente(identificationField.value)">Verificar cliente</button>
             <button mat-raised-button type="submit">
                 <span>Añadir cliente</span>
             </button>
         </mat-card-actions>
     </mat-card>
 </form>
-<button mat-raised-button (click)="fetchCliente(identificationField.value)">Verificar cliente</button>
 
 <mat-card>
     <div *ngIf="(products$ | async ) as products" id="comprobante">

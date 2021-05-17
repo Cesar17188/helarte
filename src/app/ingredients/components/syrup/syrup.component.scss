@@ -20,16 +20,17 @@
   }
 
   .syrup mat-dialog-actions {
-    display: block;
+    display: flex;
     padding: 0;
   }
 }
 
 .syrup {
+  width: 100%;
   position: relative;
   display: inline-block;
   text-align: center;
-  height: 290px;
+  height: 130px;
 }
 .syrup mat-dialog-content {
   display: block;
@@ -41,12 +42,13 @@ mat-dialog-title {
   display: block;
 }
 .mat-dialog-actions {
+  width: 100%;
   padding: 0px 0;
   display: flex;
   flex-wrap: wrap;
   min-height: 52px;
   align-items: center;
-  margin-bottom: -38px;
+  margin-bottom: 0px;
   justify-content: center;
 }
 button {

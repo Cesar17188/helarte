@@ -26,14 +26,14 @@
                             </div>
                             <div id="sabor2">
                                 <h3 *ngIf="frutas">{{frutas[0].producto}}</h3>
-                                <img *ngIf="frutas" [src]="frutas[0].img | async" alt="">
+                                <!-- <img *ngIf="frutas" [src]="frutas[0].img | async" alt=""> -->
                                 <button mat-raised-button color="warn" mat-raised-button (click)="aditionFruta()">
                                     Fruta
                                 </button>
                             </div>
                             <div id="sabor3">
                                 <h3 *ngIf="toppingD">{{toppingD[0].producto}}</h3>
-                                <img *ngIf="toppingD" [src]="toppingD[0].img | async" alt="">
+                                <!-- <img *ngIf="toppingD" [src]="toppingD[0].img | async" alt=""> -->
                                 <button mat-raised-button color="warn" mat-raised-button (click)="aditionToping()">
                                     Topping
                                 </button>
@@ -43,7 +43,7 @@
                         <div class="sabor">
                             <div id="sabor1">
                                 <h3 *ngIf="syrup">{{syrup[0].producto}}</h3>
-                                <img *ngIf="syrup" [src]="syrup[0].img | async" alt="">
+                                <!-- <img *ngIf="syrup" [src]="syrup[0].img | async" alt=""> -->
                                 <button mat-raised-button color="warn" mat-raised-button (click)="aditionSyrup()">
                                     Syrup
                                 </button>
@@ -64,21 +64,21 @@
                 <div class="sabor">
                     <div id="sabor1">
                         <h3 *ngIf="toppingS">{{toppingS[0].producto}}</h3>
-                        <img *ngIf="toppingS" [src]="toppingS[0].img | async" alt="{{toppingS[0].producto}}">
+                        <!-- <img *ngIf="toppingS" [src]="toppingS[0].img | async" alt="{{toppingS[0].producto}}"> -->
                         <button mat-raised-button color="warn" mat-raised-button (click)="aditionTopingSal()">
                             Topping de Sal 1
                         </button>
                     </div>
                     <div id="sabor2">
                         <h3 *ngIf="toppingS2">{{toppingS2[0].producto}}</h3>
-                        <img *ngIf="toppingS2" [src]="toppingS2[0].img | async" alt="">
+                        <!-- <img *ngIf="toppingS2" [src]="toppingS2[0].img | async" alt=""> -->
                         <button mat-raised-button color="warn" mat-raised-button (click)="aditionTopingSal2()">
                             Topping de Sal 2
                         </button>
                     </div>
                     <div id="sabor3">
                         <h3 *ngIf="toppingS3">{{toppingS3[0].producto}}</h3>
-                        <img *ngIf="toppingS3" [src]="toppingS3[0].img | async" alt="">
+                        <!-- <img *ngIf="toppingS3" [src]="toppingS3[0].img | async" alt=""> -->
                         <button mat-raised-button color="warn" mat-raised-button (click)="aditionTopingSal3()">
                             Topping de Sal 3
                         </button>

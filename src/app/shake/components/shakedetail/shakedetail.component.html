@@ -30,14 +30,14 @@
                     <div class="sabor">
                         <div id="sabor1">
                             <h3 *ngIf="fruta1">{{fruta1[0].producto}}</h3>
-                            <img *ngIf="fruta1" [src]="fruta1[0].img | async" alt="">
+                            <!-- <img *ngIf="fruta1" [src]="fruta1[0].img | async" alt=""> -->
                             <button mat-raised-button color="warn" mat-raised-button (click)="aditionFruta()">
                                 Fruta
                             </button>
                         </div>
                         <div id="sabor2">
                             <h3 *ngIf="fruta2">{{fruta2[0].producto}}</h3>
-                            <img *ngIf="fruta2" [src]="fruta2[0].img | async" alt="">
+                            <!-- <img *ngIf="fruta2" [src]="fruta2[0].img | async" alt=""> -->
                             <button mat-raised-button color="warn" mat-raised-button (click)="aditionFruta2()">
                                 Fruta
                             </button>
