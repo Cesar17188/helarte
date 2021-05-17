@@ -1,0 +1,12 @@
+.contact {
+  max-width: 100%;
+}
+
+.contact-header-image {
+  background-image: url("./../../assets/images/logo.jpg");
+  background-size: contain;
+}
+
+mat-card-content {
+  width: 100%;
+}

@@ -386,6 +386,9 @@ function cono(codigo: string){
     case 'h0006':
       title = 'Sabores';
       break;
+      case 'h0008':
+        title = 'Sabores';
+        break;
     default:
       title = 'Sabor';
       break;
@@ -413,6 +416,9 @@ function addFlavors(codigo: string){
     case 'h0005':
       flag = true;
       break;
+    case 'h0008':
+      flag = true;
+      break;
     default:
       flag = false;
       break;
@@ -437,6 +443,9 @@ function EneFlavorDos(codigo: string){
     case 'h0006':
       flag = true;
       break;
+    case 'h0008':
+      flag = true;
+      break;
     default:
       flag = false;
       break;
@@ -454,6 +463,9 @@ function EneFlavorTres(codigo: string){
       flag = true;
       break;
     case 'h0006':
+      flag = true;
+      break;
+    case 'h0008':
       flag = true;
       break;
     default:
