@@ -40,5 +40,10 @@ export class CartComponent implements OnInit {
     this.cartService.removeElementCart(product);
   }
 
+  // tslint:disable-next-line:typedef
+  public removeAll(){
+    this.cartService.removeAll();
+  }
+
   ngOnInit(): void {}
 }

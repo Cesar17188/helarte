@@ -30,6 +30,8 @@ export class DashboardComponent {
   totalMes = 0;
 
   // Totales diarios
+
+  // Helados
   totalDiarioConoSimple = 0;
   totalDiarioConoDoble = 0;
   totalDiarioTulipanSimple = 0;
@@ -37,13 +39,23 @@ export class DashboardComponent {
   totalDiarioCopa = 0;
   totalDiarioMedioLitro = 0;
   totalDiarioLitro = 0;
+  totalDiarioBrownie = 0;
+  totalDiarioBananaSplit = 0;
+
+  // Crepes
   totalDiarioCrepeDulce = 0;
   totalDiarioCrepeSal = 0;
   totalDiarioWafle = 0;
+
+  // Arepas
   totalDiarioArepaPollo = 0;
   totalDiarioArepaCarneMechada = 0;
+
+  // Shakes
   totalDiarioMilkShake = 0;
   totalDiarioShake = 0;
+
+  // Cafes
   totalDiarioExpreso = 0;
   totalDiarioAmericano = 0;
   totalDiarioCarajillo = 0;
@@ -52,9 +64,11 @@ export class DashboardComponent {
   totalDiarioChocolate = 0;
   totalDiarioFrapucchino = 0;
   totalDiarioTe = 0;
+  totalDiarioLatte = 0;
 
 // Totales mensuales
 
+// Helados
   totalMesConoSimple = 0;
   totalMesConoDoble = 0;
   totalMesTulipanSimple = 0;
@@ -62,13 +76,23 @@ export class DashboardComponent {
   totalMesCopa = 0;
   totalMesMedioLitro = 0;
   totalMesLitro = 0;
+  totalMesBrownie = 0;
+  totalMesBananaSplit = 0;
+
+  // Crepes
   totalMesCrepeDulce = 0;
   totalMesCrepeSal = 0;
   totalMesWafle = 0;
+
+  // Arepas
   totalMesArepaPollo = 0;
   totalMesArepaCarneMechada = 0;
+
+  // Shakes
   totalMesMilkShake = 0;
   totalMesShake = 0;
+
+  // Cafes
   totalMesExpreso = 0;
   totalMesAmericano = 0;
   totalMesCarajillo = 0;
@@ -77,6 +101,7 @@ export class DashboardComponent {
   totalMesChocolate = 0;
   totalMesFrapucchino = 0;
   totalMesTe = 0;
+  totalMesLatte = 0;
 
 
   MESES = [
@@ -178,6 +203,12 @@ export class DashboardComponent {
         if (producto.producto === 'Litro'){
           this.totalDiarioLitro += 1;
         }
+        if (producto.producto === 'Brownie'){
+          this.totalDiarioBrownie += 1;
+        }
+        if (producto.producto === 'Banana Split'){
+          this.totalDiarioBananaSplit += 1;
+        }
         if (producto.producto === 'Crepe de sal'){
           this.totalDiarioCrepeSal += 1;
         }
@@ -222,6 +253,9 @@ export class DashboardComponent {
         }
         if (producto.producto === 'Moccacino'){
           this.totalDiarioMocaccino += 1;
+        }
+        if (producto.producto === 'Latte'){
+          this.totalDiarioLatte += 1;
         }
       });
     });
@@ -282,6 +316,12 @@ export class DashboardComponent {
         if (producto.producto === 'Litro'){
           this.totalMesLitro += 1;
         }
+        if (producto.producto === 'Brownie'){
+          this.totalMesBrownie += 1;
+        }
+        if (producto.producto === 'Banana Split'){
+          this.totalMesBananaSplit += 1;
+        }
         if (producto.producto === 'Crepe de sal'){
           this.totalMesCrepeSal += 1;
         }
@@ -326,6 +366,9 @@ export class DashboardComponent {
         }
         if (producto.producto === 'Moccacino'){
           this.totalMesMocaccino += 1;
+        }
+        if (producto.producto === 'Latte'){
+          this.totalMesLatte += 1;
         }
         });
       });

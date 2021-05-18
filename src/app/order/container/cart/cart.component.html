@@ -1,5 +1,6 @@
 <div *ngIf="(products$ | async ) as products">
     <p *ngIf="products.length == 0">No hay productos</p>
+    <button mat-raised-button color="warn" (click)="removeAll()">Cancelar pedido</button>
     <table mat-table [dataSource]="products | deleteRepeats" class="mat-elevation-z8">
         <ng-container matColumnDef="Imagen">
             <th mat-header-cell *matHeaderCellDef> Imagen </th>

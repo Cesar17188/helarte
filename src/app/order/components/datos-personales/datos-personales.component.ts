@@ -90,6 +90,11 @@ export class DatosPersonalesComponent implements OnInit {
       return this.cartService.totalCart();
     }
 
+    // tslint:disable-next-line:typedef
+  public removeAll(){
+    this.cartService.removeAll();
+  }
+
   ngOnInit(): void {
     this.authService.hasUser().subscribe(
       data => {
@@ -323,11 +328,11 @@ export class DatosPersonalesComponent implements OnInit {
           mora += sabor.stock;
           moraid = sabor.codigo;
           break;
-        case 'Vainilla':
+        case 'Vainilla Oreo':
           vainilla += sabor.stock;
           vainillaid = sabor.codigo;
           break;
-        case 'Zanahoria y Naranja':
+        case 'Manjar':
           zanahoriaNaranja += sabor.stock;
           zanahoriaNaranjaid = sabor.codigo;
           break;
@@ -335,7 +340,7 @@ export class DatosPersonalesComponent implements OnInit {
           chicleSandia += sabor.stock;
           chicleSandiaid = sabor.codigo;
           break;
-        case 'Mango':
+        case 'Piña Coco':
           mango += sabor.stock;
           mangoid = sabor.codigo;
           break;
@@ -343,11 +348,11 @@ export class DatosPersonalesComponent implements OnInit {
           limonHiervaBuena += sabor.stock;
           limonHiervaBuenaid = sabor.codigo;
           break;
-        case 'Coco y Coco Rallado Pasas':
+        case 'Ron Pasas':
           cocoRalladoPasas += sabor.stock;
           cocoRalladoPasasid = sabor.codigo;
           break;
-        case 'Rosas y Cerezas':
+        case 'Frutos Rojos':
           rosasCerezas += sabor.stock;
           rosasCerezasid = sabor.codigo;
           break;
@@ -355,7 +360,7 @@ export class DatosPersonalesComponent implements OnInit {
           maracuya += sabor.stock;
           maracuyaid = sabor.codigo;
           break;
-        case 'Cafe y Almendras':
+        case 'Selva Negra':
           cafeAlmendras += sabor.stock;
           cafeAlmendrasid = sabor.codigo;
           break;
@@ -695,7 +700,7 @@ export class DatosPersonalesComponent implements OnInit {
           pollo += ToppingS.stock;
           polloid = ToppingS.codigo;
           break;
-        case 'Salami':
+        case 'Carne mechada':
           salami += ToppingS.stock;
           salamiid = ToppingS.codigo;
           break;
@@ -760,15 +765,11 @@ export class DatosPersonalesComponent implements OnInit {
     let bananaid: string;
     let fresa = 0;
     let fresaid: string;
-    let mango = 0;
-    let mangoid: string;
-    let uva = 0;
-    let uvaid: string;
     const listaStocksFrutas: STOCK = new Array();
     const listaFrutas = this.listaStockFrutas;
     listaFrutas.forEach(fruta => {
       switch (fruta.producto){
-        case 'Durazno':
+        case 'Piña':
           durazno += fruta.stock;
           duraznoid = fruta.codigo;
           break;
@@ -780,14 +781,6 @@ export class DatosPersonalesComponent implements OnInit {
           fresa += fruta.stock;
           fresaid = fruta.codigo;
           break;
-        case 'Mango':
-          mango += fruta.stock;
-          mangoid = fruta.codigo;
-          break;
-        case 'Uva':
-          uva += fruta.stock;
-          uvaid = fruta.codigo;
-          break;
       }
     });
     if (durazno !== 0){
@@ -798,12 +791,6 @@ export class DatosPersonalesComponent implements OnInit {
     }
     if (fresa !== 0){
       listaStocksFrutas.push({codigo: fresaid, stock: fresa});
-    }
-    if (mango !== 0) {
-      listaStocksFrutas.push({codigo: mangoid, stock: mango});
-    }
-    if (uva !== 0) {
-      listaStocksFrutas.push({codigo: uvaid, stock: uva});
     }
     return listaStocksFrutas;
   }

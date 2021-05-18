@@ -36,13 +36,16 @@
             </div>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-raised-button (click)="fetchCliente(identificationField.value)">Verificar cliente</button>
             <button mat-raised-button type="submit">
                 <span>Añadir cliente</span>
             </button>
         </mat-card-actions>
     </mat-card>
 </form>
+<mat-toolbar color="primary" class="actionsForm">
+    <button id="verificar" mat-raised-button (click)="fetchCliente(identificationField.value)">Verificar cliente</button>
+    <button color="warn" mat-raised-button (click)="eliminarCliente()">Eliminar cliente</button>
+</mat-toolbar>
 
 <mat-card>
     <div *ngIf="(products$ | async ) as products" id="comprobante">
@@ -134,5 +137,6 @@
     <mat-card-actions>
         <button mat-raised-button (click)="saveComprobante()">Enviar comprobante</button>
         <button mat-raised-button (click)="generarPDF()">Imprimir comprobante</button>
+        <button mat-raised-button color="warn" (click)="finalizarCompra()">Finalizar Compra</button>
     </mat-card-actions>
 </mat-card>

@@ -46,16 +46,14 @@ export class FrutasContainerComponent implements OnInit {
           unidadMedida: e.payload.doc.data().unidadMedida
         };
       });
-      this.fetchStockDurazno(this.frutas[0].id);
+      this.fetchStockPiña(this.frutas[0].id);
       this.fetchStockFresa(this.frutas[1].id);
-      this.fetchStockUva(this.frutas[2].id);
-      this.fetchStockMango(this.frutas[3].id);
-      this.fetchStockBanana(this.frutas[4].id);
+      this.fetchStockBanana(this.frutas[2].id);
     });
   }
 
   // tslint:disable-next-line:typedef
-  fetchStockDurazno(id: string){
+  fetchStockPiña(id: string){
     this.inventarioFrutasService.getStock(id)
     .subscribe(data => {
       this.durazno = data.map( e => {
@@ -80,33 +78,6 @@ export class FrutasContainerComponent implements OnInit {
         this.stockFresa = [Object.assign(this.frutas[1], this.fresa)];
       });
     }
-    // tslint:disable-next-line:typedef
-    fetchStockUva(id: string){
-      this.inventarioFrutasService.getStock(id)
-      .subscribe(data => {
-        this.uva = data.map( e => {
-          return {
-            codigo: e.payload.doc.data().codigo,
-            stock: e.payload.doc.data().stock
-          };
-        });
-        this.stockUva = [Object.assign(this.frutas[2], this.uva)];
-      });
-    }
-
-    // tslint:disable-next-line:typedef
-    fetchStockMango(id: string){
-      this.inventarioFrutasService.getStock(id)
-      .subscribe(data => {
-        this.mango = data.map( e => {
-          return {
-            codigo: e.payload.doc.data().codigo,
-            stock: e.payload.doc.data().stock
-          };
-        });
-        this.stockMango = [Object.assign(this.frutas[3], this.mango)];
-      });
-    }
 
     // tslint:disable-next-line:typedef
     fetchStockBanana(id: string){
@@ -118,8 +89,8 @@ export class FrutasContainerComponent implements OnInit {
             stock: e.payload.doc.data().stock
           };
         });
-        this.stockBanana = [Object.assign(this.frutas[4], this.banana)];
-        this.stocks = this.stockDurazno.concat(this.stockFresa, this.stockUva, this.stockMango, this.stockBanana);
+        this.stockBanana = [Object.assign(this.frutas[2], this.banana)];
+        this.stocks = this.stockDurazno.concat(this.stockFresa, this.stockBanana);
       });
     }
 

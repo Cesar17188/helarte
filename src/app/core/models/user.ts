@@ -6,7 +6,9 @@ export interface User {
     password?: string;
     photoURL?: string;
     displayName?: string;
+    phoneNumber?: string;
     emailVerified?: boolean;
+    providerId?: string;
     role?: Roles;
 }
 

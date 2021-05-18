@@ -12,6 +12,7 @@ import { buffer, map } from 'rxjs/operators';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-comprobante',
@@ -37,6 +38,7 @@ export class ComprobanteComponent implements OnInit {
     private cartService: CartService,
     private clientService: ClientsService,
     private comprobanteService: ComprobantesService,
+    private router: Router,
     // tslint:disable-next-line:variable-name
     private _snackBar: MatSnackBar
   ) {
@@ -139,7 +141,7 @@ export class ComprobanteComponent implements OnInit {
       });
       this.newClient = this.clients[0];
       console.log(this.newClient);
-      if (this.newClient !== undefined ){
+      if (this.newClient !== undefined){
         this.cliente.patchValue(this.newClient);
       } else {
         const identificationActual = this.identificationField.value;
@@ -148,6 +150,11 @@ export class ComprobanteComponent implements OnInit {
         this.cliente.controls.identification.setValue(identificationActual);
       }
     });
+  }
+
+  // tslint:disable-next-line:typedef
+  eliminarCliente() {
+    this.cliente.reset();
   }
 
   // tslint:disable-next-line:typedef
@@ -167,6 +174,12 @@ export class ComprobanteComponent implements OnInit {
   // tslint:disable-next-line:typedef
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action);
+  }
+
+  // tslint:disable-next-line:typedef
+  finalizarCompra() {
+    this.router.navigate(['/']);
+    window.location.reload();
   }
 
 }

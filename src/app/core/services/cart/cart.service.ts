@@ -41,6 +41,13 @@ export class CartService {
   }
 
   // tslint:disable-next-line:typedef
+  removeAll() {
+    const numberProducts = this.products.length;
+    const car = this.cart.getValue().splice(0, numberProducts);
+    this.cart.next(car);
+  }
+
+  // tslint:disable-next-line:typedef
   getProducts(){
     return this.cart.getValue();
   }
